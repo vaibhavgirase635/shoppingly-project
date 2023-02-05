@@ -1,33 +1,197 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import View
 from .forms import *
 from django.contrib import messages
 
-def home(request):
- return render(request, 'app/home.html')
+class ProductView(View):
+    def get(self, request):
+        topwears = Product.objects.filter(category='TW')
+        bottomwears = Product.objects.filter(category='BW')
+        mobiles = Product.objects.filter(category='M')
+        return render(request, 'app/home.html',{'topwears':topwears,'bottomwears':bottomwears,
+        'mobiles':mobiles})
 
-def product_detail(request):
- return render(request, 'app/productdetail.html')
+class ProductDetailView(View):
+    def get(self, request, pk):
+        product = Product.objects.get(pk=pk)
+        return render(request, 'app/productdetail.html',{'product':product})
+
+
 
 def add_to_cart(request):
- return render(request, 'app/addtocart.html')
+    user=request.user
+    product_id = request.GET.get('prod_id')
+    product = Product.objects.get(id=product_id)
+    Cart(product=product, user=user).save()  
+    #return render(request, 'addtocart.html')
+    return redirect('/cart')
+
+def show_cart(request):
+    if request.user.is_authenticated:
+        user = request.user
+        cart =Cart.objects.filter(user=user)
+        print(cart)
+        amount = 0.0
+        shipping_amount = 70.0
+        total_amount = 0.0
+        cart_product= [ p for p in Cart.objects.all() if p.user == user]
+        #print(cart_product)
+        if cart_product:
+            for p in cart_product:
+                tempamount = (p.quantity * p.product.discounted_price)
+                amount += tempamount
+                totalamount = amount + shipping_amount
+            return render(request, 'app/addtocart.html',{'carts':cart, 'totalamount':totalamount, 'amount':amount})
+        else:
+            return render(request, 'app/emptycart.html')
+
+def show_cart(request):
+    if request.user.is_authenticated:
+        user = request.user
+        cart =Cart.objects.filter(user=user)
+        print(cart)
+        amount = 0.0
+        shipping_amount = 70.0
+        total_amount = 0.0
+        cart_product= [ p for p in Cart.objects.all() if p.user == user]
+        #print(cart_product)
+        if cart_product:
+            for p in cart_product:
+                tempamount = (p.quantity * p.product.discounted_price)
+                amount += tempamount
+                totalamount = amount + shipping_amount
+            return render(request, 'app/addtocart.html',{'carts':cart, 'totalamount':totalamount, 'amount':amount})
+        else:
+            return render(request, 'app/emptycart.html')
+    #return render(request, 'addtocart.html')
+
+def plus_cart(request):
+    if request.method == 'GET':
+        prod_id = request.GET['prod_id']
+        #print(prod_id)
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.quantity+=1
+        c.save()
+        amount = 0.0
+        shipping_amount = 70.0
+        total_amount = 0.0
+        cart_product= [ p for p in Cart.objects.all() if p.user == request.user]
+        for p in cart_product:
+            tempamount = (p.quantity * p.product.discounted_price)
+            amount += tempamount
+            totalamount = amount + shipping_amount
+
+        data ={
+            'quantity': c.quantity,
+            'amount':  amount,
+            'totalamount': totalamount
+        }
+        return JsonResponse(data)
+
+def minus_cart(request):
+    if request.method == 'GET':
+        prod_id = request.GET['prod_id']
+        #print(prod_id)
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.quantity-=1
+        c.save()
+        amount = 0.0
+        shipping_amount = 70.0
+        total_amount = 0.0
+        cart_product= [ p for p in Cart.objects.all() if p.user == request.user]
+        for p in cart_product:
+            tempamount = (p.quantity * p.product.discounted_price)
+            amount += tempamount
+            totalamount = amount + shipping_amount
+
+        data ={
+            'quantity': c.quantity,
+            'amount':  amount,
+            'totalamount': totalamount
+        }
+        return JsonResponse(data)
+
+def remove_cart(request):
+    if request.method == 'GET':
+        prod_id = request.GET['prod_id']
+        #print(prod_id)
+        c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.delete()
+        amount = 0.0
+        shipping_amount = 70.0
+        total_amount = 0.0
+        cart_product= [ p for p in Cart.objects.all() if p.user == request.user]
+        for p in cart_product:
+            tempamount = (p.quantity * p.product.discounted_price)
+            amount += tempamount
+            totalamount = amount + shipping_amount
+
+        data ={
+            'amount':  amount,
+            'totalamount': totalamount
+        }
+        return JsonResponse(data)
+
 
 def buy_now(request):
- return render(request, 'app/buynow.html')
+    return render(request, 'app/buynow.html')
 
 
 def address(request):
     add = Customer.objects.filter(user=request.user)
     return render(request, 'app/address.html', {'add':add, 'active':'btn-primary'})
 
+def Update(request):
+    update = Customer.objects.u
+
 def orders(request):
  return render(request, 'app/orders.html')
 
 
-def mobile(request):
- return render(request, 'app/mobile.html')
+def mobile(request, data=None):
+    print(data)
+    if data == None:
+        mobiles = Product.objects.filter(category='M')
+    elif data == 'Redmi' or data == 'Samsung':
+        mobiles = Product.objects.filter(category='M').filter(brand=data)
+    elif data == 'OPPO' or data == 'ViVo':
+        mobiles = Product.objects.filter(category='M').filter(brand=data)
+    elif data == 'iPhone' or data == 'ViVo':
+        mobiles = Product.objects.filter(category='M').filter(brand=data)
+    elif data =='below':
+        mobiles = Product.objects.filter(category='M').filter(discounted_price__lt=10000)
+    elif data =='above':
+        mobiles = Product.objects.filter(category='M').filter(discounted_price__gt=10000)
+    return render(request, 'app/mobile.html', {'mobiles':mobiles})
 
+def atta(request):
+    attas = Product.objects.filter(category='A')
+    return render(request, 'app/atta.html', {'attas':attas})
 
+def chhola(request):
+    chholas = Product.objects.filter(category='C')
+    print(chholas)
+    return render(request, 'app/atta.html', {'chholas':chholas})
+
+def CookingOil(request):
+    oils = Product.objects.filter(category='CO')
+    print(oils)
+    return render(request, 'app/cookingoil.html', {'oils':oils})
+
+def Kitchen(request):
+    kitchen = Product.objects.filter(category='K')
+    print(kitchen)
+    return render(request, 'app/kitchen.html', {'kitchen':kitchen})
+
+def Rice(request):
+    rice = Product.objects.filter(category='R')
+    print(rice)
+    return render(request, 'app/rice.html', {'rice':rice})
+
+def Dal(request):
+    dal = Product.objects.filter(category='DP')
+    print(dal)
+    return render(request, 'app/dal.html', {'dal':dal})
 
 class CustomerRegistrationView(View):
     def get(self,request):

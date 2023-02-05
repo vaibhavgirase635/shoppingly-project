@@ -2,15 +2,36 @@ from django.urls import path
 from app import views
 from django.contrib.auth import views as auth_views
 from .forms import *
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
-    path('', views.home),
-    path('product-detail/', views.product_detail, name='product-detail'),
-    path('cart/', views.add_to_cart, name='add-to-cart'),
+    
+
+    path('',views.ProductView.as_view(),name='home'),
+
+    path('product-detail/<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
+
+    path('add-to-cart/', views.add_to_cart, name='add-to-cart'),
+
+    path('cart/', views.show_cart, name='showcart'),
+
+    path('pluscart/', views.plus_cart),
+
+    path('minuscart/', views.minus_cart),
+
+    path('removecart/', views.remove_cart),
+
+
     path('buy/', views.buy_now, name='buy-now'),
+
     path('profile/', views.ProfileView.as_view(), name='profile'),
+
     path('address/', views.address, name='address'),
+
     path('orders/', views.orders, name='orders'),
+
     path('changepassword/', auth_views.PasswordChangeView.as_view(template_name='app/changepassword.html',
+
     form_class=ChangePasswordForm, success_url='/passwordchangedone/'), name='changepassword'),
     
     path('passwordchangedone/',auth_views.PasswordChangeView.as_view(template_name='app/passwordchangedone.html'),
@@ -29,9 +50,26 @@ urlpatterns = [
     (template_name='app/password_reset_complete.html'),name='password_reset_complete'),
 
     path('mobile/', views.mobile, name='mobile'),
+    
+    path('mobile/<slug:data>', views.mobile, name='mobiledata'),
+
+    path('atta/', views.atta, name='atta'),
+
+    path('chhola/',views.chhola, name='chhola'),
+
+    path('oil/',views.CookingOil, name='oil'),
+
+    path('kitchen/',views.Kitchen, name='kitchen'),
+
+    path('rice/',views.Rice, name='rice'),
+
+    path('dal/',views.Dal, name='dal'),
+    
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', 
     authentication_form=LoginForm), name='login'),
     path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
     path('logout/',auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('checkout/', views.checkout, name='checkout'),
-]
+] 
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -51,6 +51,20 @@
                <li><a class="dropdown-item" href="#">Bottom Wear</a></li>
              </ul>
            </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="grosseryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Grossery
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="grosseryDropdown">
+              <li><a class="dropdown-item" href="{% url 'atta' %}">Atta Maida and other flours</a></li>
+              <li><a class="dropdown-item" href="{% url 'oil' %}">Cooking oil and Ghee</a></li>
+              <li><a class="dropdown-item" href="{% url 'chhola' %}">Chhola</a></li>
+              <li><a class="dropdown-item" href="{% url 'dal' %}">Dal/pulses</a></li>
+              <li><a class="dropdown-item" href="#">Matar</a></li>
+              <li><a class="dropdown-item" href="{% url 'rice' %}">Rice</a></li>
+              <li><a class="dropdown-item" href="{% url 'kitchen' %}">Kitchen</a></li>
+            </ul>
+          </li>
          </ul>
          <form class="d-flex">
            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
