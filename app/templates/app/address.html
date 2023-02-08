@@ -23,6 +23,11 @@
        <p>City: {{ad.city}}</p>
        <p>State: {{ad.state}}</p>
        <p>Pin Code: {{ad.zipcode}}</p>
+       <a href="{% url 'updateaddress' ad.id %}" class="btn btn-warning">Edit</a>
+       <form action="{% url 'deleteaddress' ad.id %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Delete">
+       </form>
       </div>
      </div>
     </div>

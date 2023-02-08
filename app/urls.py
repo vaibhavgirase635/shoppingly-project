@@ -28,6 +28,10 @@ urlpatterns = [
 
     path('address/', views.address, name='address'),
 
+    path('update-address/<int:id>', views.update_address, name='updateaddress'),
+
+    path('delete-address/<int:id>', views.delete_address, name='deleteaddress'),
+
     path('orders/', views.orders, name='orders'),
 
     path('changepassword/', auth_views.PasswordChangeView.as_view(template_name='app/changepassword.html',
@@ -65,8 +69,7 @@ urlpatterns = [
 
     path('dal/',views.Dal, name='dal'),
     
-    path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', 
-    authentication_form=LoginForm), name='login'),
+    path('login/', views.LoginPage, name='login'),
     path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
     path('logout/',auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('checkout/', views.checkout, name='checkout'),
