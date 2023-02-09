@@ -24,6 +24,7 @@ class ProductDetailView(View):
 def add_to_cart(request):
     user=request.user
     product_id = request.GET.get('prod_id')
+    print(product_id)
     product = Product.objects.get(id=product_id)
     Cart(product=product, user=user).save()  
     #return render(request, 'addtocart.html')
@@ -127,11 +128,11 @@ def remove_cart(request):
         for p in cart_product:
             tempamount = (p.quantity * p.product.discounted_price)
             amount += tempamount
-            totalamount = amount + shipping_amount
+            #totalamount = amount + shipping_amount
 
         data ={
             'amount':  amount,
-            'totalamount': totalamount
+            'totalamount': amount + shipping_amount
         }
         return JsonResponse(data)
 
@@ -250,7 +251,7 @@ def checkout(request):
             amount += tempamount
         totalamount = amount + shipping_amount
 
-    return render(request, 'app/checkout.html', {'add':add, 'totalamount':totalamount, 'cart_items':cart_items6})
+    return render(request, 'app/checkout.html', {'add':add, 'totalamount':totalamount, 'cart_items':cart_items})
 
 class ProfileView(View):
     def get(self, request):

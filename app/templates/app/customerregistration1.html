@@ -85,7 +85,7 @@
               </ul>
             </li>
             <li class="nav-item mx-2">
-             <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{{totalitem}}</span> Cart </a>
+             <a href="{% url 'add-to-cart' %}" class="nav-link text-white"><span class="badge bg-danger">4</span> Cart </a>
             </li>
             {% else %}
             <li class="nav-item mx-2">
@@ -100,6 +100,37 @@
        </div>
      </div>
     </nav>
+    <div class="container">
+        <div class="row my-3">
+         <div class="col-sm-6 offset-sm-3">
+          <h3>Customer Registration</h3>
+          <hr>
+       
+          <form action="" method="post">
+             {% csrf_token %} 
+             
+       
+             <label for="username">Username</label>
+             <input type="text" placeholder="Username" name="username" id="username">
+             <br><br>
+             <label for="email">Email</label>
+             <input type="email" placeholder="Email or Phone" name="email" id="email">
+             <br><br>
+             <label for="password1">Password</label>
+             <input type="password" placeholder="Password" id="password1" name="password1">
+             <br><br>
+             <label for="password2">Confirm Password</label>
+             <input type="password" placeholder="Confrom Password" id="password2" name="password2">
+             <br><br>
+             <button class="btn btn-primary" type="submit">Submit</button>
+             <div class="text-center text-primary fw-bold">
+                <small>Existing User ? <a href="{% url 'login' %}" class="text-danger">Login Now</a></small>
+             </div>
+             
+          </form>
+         </div>
+        </div>
+       </div>
     {% block banner_slider %} {% endblock banner_slider %}
     {% block livesale %} {% endblock livesale %}
     {% block main-content %} {% endblock main-content %}
