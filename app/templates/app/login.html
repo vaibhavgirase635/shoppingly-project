@@ -101,8 +101,11 @@
             </li>
             {% else %}
             <li class="nav-item mx-2">
-             <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+             <a href="{% url 'login' %}" class="nav-link text-white">User Login</a>
             </li>
+            <li class="nav-item mx-2">
+              <a href="http://127.0.0.1:8000/admin/" class="nav-link text-white">Admin Login</a>
+             </li>
             <li class="nav-item mx-2">
              <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
             </li>

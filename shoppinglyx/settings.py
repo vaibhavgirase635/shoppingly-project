@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'app',
     'crispy_forms',
     'corsheaders',
-    'localflavor'
+    'localflavor',
 ]
 
 MIDDLEWARE = [
@@ -132,8 +133,15 @@ LOGIN_REDIRECT_URL = '/profile/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'vaibhavrajput635@gmail.com'
-EMAIL_HOST_PASSWORD = 'thpqkzqqdgvmkkco '
+EMAIL_HOST_USER = 
+EMAIL_HOST_PASSWORD = 
 EMAIL_USE_TLS = True
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+JAZZMIN_SETTINGS = {
+    'site_header': "Grossery Shop",
+    'site_brand': "You order, we deliver",
+    #'site_logo': "staitc/app/images/banner/b3.jpg",
+    'copyright': "Shivila Technology",
+}

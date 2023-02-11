@@ -9,7 +9,7 @@ class Customer(models.Model):
     locality = models.CharField(max_length=200)
     city = models.CharField(max_length=50)
     zipcode = models.IntegerField()
-    state = INStateField(null=True,blank=True)
+    state = INStateField(null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
