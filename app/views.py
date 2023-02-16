@@ -8,20 +8,30 @@ from django.contrib.auth import authenticate, login, logout
 
 class ProductView(View):
     def get(self, request):
+        totalitem = 0
         topwears = Product.objects.filter(category='TW')
         bottomwears = Product.objects.filter(category='BW')
         mobiles = Product.objects.filter(category='M')
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         return render(request, 'app/home.html',{'topwears':topwears,'bottomwears':bottomwears,
-        'mobiles':mobiles})
+        'mobiles':mobiles, 'totalitem':totalitem})
 
 class ProductDetailView(View):
     def get(self, request, pk):
+        totalitem = 0
         product = Product.objects.get(pk=pk)
-        return render(request, 'app/productdetail.html',{'product':product})
+        item_already_in_cart = False
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
+            item_already_in_cart = Cart.objects.filter(Q(product=product.id) & Q(user=request.user)).exists()
+        return render(request, 'app/productdetail.html',{'product':product, 'item_already_in_cart':item_already_in_cart,
+        'totalitem':totalitem})
 
 
 
 def add_to_cart(request):
+    
     user=request.user
     product_id = request.GET.get('prod_id')
     print(product_id)
@@ -32,6 +42,7 @@ def add_to_cart(request):
 
 def show_cart(request):
     if request.user.is_authenticated:
+        totalitem = 0
         user = request.user
         cart =Cart.objects.filter(user=user)
         print(cart)
@@ -39,35 +50,16 @@ def show_cart(request):
         shipping_amount = 70.0
         total_amount = 0.0
         cart_product= [ p for p in Cart.objects.all() if p.user == user]
-        #print(cart_product)
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         if cart_product:
             for p in cart_product:
                 tempamount = (p.quantity * p.product.discounted_price)
                 amount += tempamount
                 totalamount = amount + shipping_amount
-            return render(request, 'app/addtocart.html',{'carts':cart, 'totalamount':totalamount, 'amount':amount})
+            return render(request, 'app/addtocart.html',{'carts':cart, 'totalamount':totalamount, 'amount':amount, 'totalitem':totalitem})
         else:
             return render(request, 'app/emptycart.html')
-
-def show_cart(request):
-    if request.user.is_authenticated:
-        user = request.user
-        cart =Cart.objects.filter(user=user)
-        print(cart)
-        amount = 0.0
-        shipping_amount = 70.0
-        total_amount = 0.0
-        cart_product= [ p for p in Cart.objects.all() if p.user == user]
-        #print(cart_product)
-        if cart_product:
-            for p in cart_product:
-                tempamount = (p.quantity * p.product.discounted_price)
-                amount += tempamount
-                totalamount = amount + shipping_amount
-            return render(request, 'app/addtocart.html',{'carts':cart, 'totalamount':totalamount, 'amount':amount})
-        else:
-            return render(request, 'app/emptycart.html')
-    #return render(request, 'addtocart.html')
 
 def plus_cart(request):
     if request.method == 'GET':
@@ -83,12 +75,12 @@ def plus_cart(request):
         for p in cart_product:
             tempamount = (p.quantity * p.product.discounted_price)
             amount += tempamount
-            totalamount = amount + shipping_amount
+            
 
         data ={
             'quantity': c.quantity,
             'amount':  amount,
-            'totalamount': totalamount
+            'totalamount': amount + shipping_amount
         }
         return JsonResponse(data)
 
@@ -106,12 +98,12 @@ def minus_cart(request):
         for p in cart_product:
             tempamount = (p.quantity * p.product.discounted_price)
             amount += tempamount
-            totalamount = amount + shipping_amount
+            
 
         data ={
             'quantity': c.quantity,
             'amount':  amount,
-            'totalamount': totalamount
+            'totalamount': amount + shipping_amount
         }
         return JsonResponse(data)
 
@@ -128,8 +120,7 @@ def remove_cart(request):
         for p in cart_product:
             tempamount = (p.quantity * p.product.discounted_price)
             amount += tempamount
-            #totalamount = amount + shipping_amount
-
+            
         data ={
             'amount':  amount,
             'totalamount': amount + shipping_amount
@@ -142,8 +133,11 @@ def buy_now(request):
 
 
 def address(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     add = Customer.objects.filter(user=request.user)
-    return render(request, 'app/address.html', {'add':add, 'active':'btn-primary'})
+    return render(request, 'app/address.html', {'add':add, 'active':'btn-primary', 'totalitem':totalitem})
 
 def update_address(request,id):
     if request.method == 'POST':
@@ -164,7 +158,11 @@ def delete_address(request,id):
         return redirect('address')
 
 def orders(request):
- return render(request, 'app/orders.html')
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
+    op = OrderPlaced.objects.filter(user=request.user)
+    return render(request, 'app/orders.html', {'order_placed':op, 'totalitem':totalitem})
 
 
 def mobile(request, data=None):
@@ -184,33 +182,51 @@ def mobile(request, data=None):
     return render(request, 'app/mobile.html', {'mobiles':mobiles})
 
 def atta(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     attas = Product.objects.filter(category='A')
-    return render(request, 'app/atta.html', {'attas':attas})
+    return render(request, 'app/atta.html', {'attas':attas, 'totalitem':totalitem})
 
 def chhola(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     chholas = Product.objects.filter(category='C')
     print(chholas)
-    return render(request, 'app/atta.html', {'chholas':chholas})
+    return render(request, 'app/chhola.html', {'chholas':chholas, 'totalitem':totalitem})
 
 def CookingOil(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     oils = Product.objects.filter(category='CO')
     print(oils)
-    return render(request, 'app/cookingoil.html', {'oils':oils})
+    return render(request, 'app/cookingoil.html', {'oils':oils, 'totalitem':totalitem})
 
 def Kitchen(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     kitchen = Product.objects.filter(category='K')
     print(kitchen)
-    return render(request, 'app/kitchen.html', {'kitchen':kitchen})
+    return render(request, 'app/kitchen.html', {'kitchen':kitchen, 'totalitem':totalitem})
 
 def Rice(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     rice = Product.objects.filter(category='R')
     print(rice)
-    return render(request, 'app/rice.html', {'rice':rice})
+    return render(request, 'app/rice.html', {'rice':rice, 'totalitem':totalitem})
 
 def Dal(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     dal = Product.objects.filter(category='DP')
     print(dal)
-    return render(request, 'app/dal.html', {'dal':dal})
+    return render(request, 'app/dal.html', {'dal':dal, 'totalitem':totalitem})
 
 class CustomerRegistrationView(View):
     def get(self,request):
@@ -249,9 +265,19 @@ def checkout(request):
         for p in cart_product:
             tempamount = (p.quantity * p.product.discounted_price)
             amount += tempamount
-        totalamount = amount + shipping_amount
+            totalamount = amount + shipping_amount
 
     return render(request, 'app/checkout.html', {'add':add, 'totalamount':totalamount, 'cart_items':cart_items})
+
+def payment_done(request):
+    user = request.user
+    custid = request.GET.get('custid')
+    customer = Customer.objects.get(id=custid)
+    cart = Cart.objects.filter(user=user)
+    for c in cart:
+        OrderPlaced(user=user, customer=customer, product=c.product, quantity=c.quantity).save()
+        c.delete()
+    return redirect("orders")
 
 class ProfileView(View):
     def get(self, request):
