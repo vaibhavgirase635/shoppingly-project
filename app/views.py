@@ -281,8 +281,11 @@ def payment_done(request):
 
 class ProfileView(View):
     def get(self, request):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         form = CustomerProfileForm()
-        return render(request, 'app/profile.html', {'form':form, 'active':'btn-primary'})
+        return render(request, 'app/profile.html', {'form':form, 'active':'btn-primary', 'totalitem':totalitem})
 
     def post(self,request):
         form = CustomerProfileForm(request.POST)

@@ -1,32 +1,42 @@
 <!doctype html>
 {% load static %}
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--Owl Carousel CSS-->
-    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
-	
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <!--FontAwesome CSS-->
-    <!-- <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}"> -->
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <!--Custom CSS-->
-    <!-- <link rel="stylesheet" href="{% static 'app/css/style.css' %}"> -->
-    <link rel="stylesheet" href="{% static 'app/css/bootstrap.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'app/css/font-awesome.css' %}"> -->
-    <link rel="stylesheet" href="{% static 'app/css/style2.css' %}">
+	<!--Owl Carousel CSS-->
+	<link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<!--FontAwesome CSS-->
+	<!-- <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}"> -->
+
+	<!--Custom CSS-->
+	<!-- <link rel="stylesheet" href="{% static 'app/css/style.css' %}"> -->
+	<link rel="stylesheet" href="{% static 'app/css/bootstrap.css' %}">
+	<!-- <link rel="stylesheet" href="{% static 'app/css/font-awesome.css' %}"> -->
+	<link rel="stylesheet" href="{% static 'app/css/style2.css' %}">
 
 
-    <title>Shivila | {% block title %} {% endblock title %} </title>
-  </head>
-  <body>
-    <!-- top-header -->
+	<title>Shivila | {% block title %} {% endblock title %} </title>
+	<style>
+		.container-fluid{
+			align-items: center;
+		}
+	</style>
+
+</head>
+
+<body>
+	<!-- top-header -->
 	<div class="header-most-top">
 		<p>Grocery Offer Zone Top Deals & Discounts</p>
 	</div>
@@ -58,9 +68,9 @@
 					<li>
 						<span class="fa-solid fa-phone" aria-hidden="true"></span> 001 234 5678
 					</li>
-					
-					
-				
+
+
+
 				</ul>
 				<!-- //header lists -->
 				<!-- search -->
@@ -77,6 +87,7 @@
 				<div class="top_nav_right">
 					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
 						<form action="#" method="post" class="last">
+							{% csrf_token %}
 							<input type="hidden" name="cmd" value="_cart">
 							<input type="hidden" name="display" value="1">
 							<button class="w3view-cart" type="submit" name="submit" value="">
@@ -91,98 +102,104 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-    </div>
-  </div>
-  <div class="container-fluid">
-	<div class="row">
-		
-    <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-     
-       
-       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-           <li class="nav-item">
-             <a class="nav-link text-dark active" aria-current="page" href="/">Home</a>
-           </li>
-           <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle text-dark" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               Electronics
-             </a>
-             <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
-               <li><a class="dropdown-item text-dark" href="{% url 'mobile' %}">Mobile</a></li>
-               <li><a class="dropdown-item text-dark" href="#">Laptop</a></li>
-             </ul>
-           </li>
-           <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle text-dark" href="#" id="fashionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               Fashion
-             </a>
-             <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
-               <li><a class="dropdown-item text-dark" href="#">Top Wear</a></li>
-               <li><a class="dropdown-item text-dark" href="#">Bottom Wear</a></li>
-             </ul>
-           </li>
-           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark" href="#" id="grosseryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Grossery
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="grosseryDropdown">
-              <li><a class="dropdown-item text-dark" href="{% url 'atta' %}">Atta Maida and other flours</a></li>
-              <li><a class="dropdown-item text-dark" href="{% url 'oil' %}">Cooking oil and Ghee</a></li>
-              <li><a class="dropdown-item text-dark" href="{% url 'chhola' %}">Chhola</a></li>
-              <li><a class="dropdown-item text-dark" href="{% url 'dal' %}">Dal/pulses</a></li>
-              <li><a class="dropdown-item text-dark" href="#">Matar</a></li>
-              <li><a class="dropdown-item text-dark" href="{% url 'rice' %}">Rice</a></li>
-              <li><a class="dropdown-item text-dark" href="{% url 'kitchen' %}">Kitchen</a></li>
-            </ul>
-          </li>
-         </ul>
-         
-         <div>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {% if request.user.is_authenticated %}
-            <li class="nav-item dropdown mx-2">
-              <a class="nav-link dropdown-toggle text-dark" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{request.user.username|capfirst}}
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                <li><a class="dropdown-item text-dark" href="{% url 'profile' %}">Profile</a></li>
-                <li><a class="dropdown-item text-dark" href="{% url 'orders' %}">Orders</a></li>
-                <li><a class="dropdown-item text-dark" href="{% url 'changepassword' %}">Change Password</a></li>
-                <li><a class="dropdown-item text-dark" href="{% url 'logout' %}">Logout</a></li>
-              </ul>
-            </li>
-            <li class="nav-item mx-2">
-             <a href="{% url 'showcart' %}" class="nav-link text-dark"><span class="badge bg-danger">{{totalitem}}</span>Cart</a>
-            </li>
-            {% else %}
-            <li class="nav-item mx-3">
-             <a href="{% url 'login' %}" class="nav-link text-dark">User Login</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a href="http://127.0.0.1:8000/admin/" class="nav-link text-dark">Admin Login</a>
-            </li>
-            <li class="nav-item mx-3">
-             <a href="{% url 'customerregistration' %}" class="nav-link text-dark">Registration</a>
-            </li>
-            {% endif %}
-          </ul>
-         </div>
-       </div>
-     </div>
-    </nav>
-</div>
-</div>
-<!-- //navigation -->
-    {% block banner_slider %} {% endblock banner_slider %}
-    {% block livesale %} {% endblock livesale %}
-    {% block main-content %} {% endblock main-content %}
+	</div>
+	</div>
+	<div class="container">
+			<nav class="navbar navbar-expand-lg  navbar-dark bg-white">
 
-    <!-- Start Footer -->
-    <!-- //special offers -->
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link text-dark active" aria-current="page" href="/">Home</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-dark" href="#" id="electronicsDropdown"
+								role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Electronics
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+								<li><a class="dropdown-item text-dark" href="{% url 'mobile' %}">Mobile</a></li>
+								<li><a class="dropdown-item text-dark" href="#">Laptop</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-dark" href="#" id="fashionDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								Fashion
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+								<li><a class="dropdown-item text-dark" href="#">Top Wear</a></li>
+								<li><a class="dropdown-item text-dark" href="#">Bottom Wear</a></li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-dark" href="#" id="grosseryDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								Grossery
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="grosseryDropdown">
+								<li><a class="dropdown-item text-dark" href="{% url 'atta' %}">Atta Maida and other
+										flours</a></li>
+								<li><a class="dropdown-item text-dark" href="{% url 'oil' %}">Cooking oil and Ghee</a>
+								</li>
+								<li><a class="dropdown-item text-dark" href="{% url 'chhola' %}">Chhola</a></li>
+								<li><a class="dropdown-item text-dark" href="{% url 'dal' %}">Dal/pulses</a></li>
+								<li><a class="dropdown-item text-dark" href="#">Matar</a></li>
+								<li><a class="dropdown-item text-dark" href="{% url 'rice' %}">Rice</a></li>
+								<li><a class="dropdown-item text-dark" href="{% url 'kitchen' %}">Kitchen</a></li>
+							</ul>
+						</li>
+						{% if request.user.is_authenticated %}
+						<li class="nav-item dropdown mx-2">
+							<a class="nav-link dropdown-toggle text-dark" href="#" id="profileDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								{{request.user.username|capfirst}}
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="profileDropdown">
+								<li><a class="dropdown-item text-dark" href="{% url 'profile' %}">Profile</a></li>
+								<li><a class="dropdown-item text-dark" href="{% url 'orders' %}">Orders</a></li>
+								<li><a class="dropdown-item text-dark" href="{% url 'changepassword' %}">Change
+										Password</a></li>
+								<li><a class="dropdown-item text-dark" href="{% url 'logout' %}">Logout</a></li>
+							</ul>
+						</li>
+						<li class="nav-item mx-2">
+							<a href="{% url 'showcart' %}" class="nav-link text-dark"><span
+									class="badge bg-danger">{{totalitem}}</span>Cart</a>
+						</li>
+						{% else %}
+						<li class="nav-item mx-3">
+							<a href="{% url 'login' %}" class="nav-link text-dark">User Login</a>
+						</li>
+						<li class="nav-item mx-3">
+							<a href="http://127.0.0.1:8000/admin/" class="nav-link text-dark">Admin Login</a>
+						</li>
+						<li class="nav-item mx-3">
+							<a href="{% url 'customerregistration' %}" class="nav-link text-dark">Registration</a>
+						</li>
+						{% endif %}
+					</ul>
+
+
+
+				</div>
+
+			</nav>
+		
+	</div>
+	<!-- //navigation -->
+	{% block banner_slider %} {% endblock banner_slider %}
+	{% block livesale %} {% endblock livesale %}
+	{% block main-content %} {% endblock main-content %}
+
+	<!-- Start Footer -->
+	<!-- //special offers -->
 	<!-- newsletter -->
 	<div class="footer-top">
 		<div class="container-fluid">
@@ -203,14 +220,18 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-  <footer>
+	<footer>
 		<div class="container">
 			<!-- footer first section -->
 			<p class="footer-main">
-				<span>"Grocery Shoppy"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-				magni dolores eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
-				beatae vitae dicta sunt explicabo.</p>
+				<span>"Grocery Shoppy"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+				fugit, sed quia consequuntur
+				magni dolores eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis iste natus error
+				sit voluptatem
+				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+				quasi architecto
+				beatae vitae dicta sunt explicabo.
+			</p>
 			<!-- //footer first section -->
 			<!-- footer second section -->
 			<div class="w3l-grids-footer">
@@ -243,7 +264,7 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-      <div class="footer-info w3-agileits-info">
+			<div class="footer-info w3-agileits-info">
 				<!-- footer categories -->
 				<div class="col-sm-5 address-right">
 					<div class="col-xs-6 footer-grids">
@@ -293,7 +314,7 @@
 					</div>
 					<div class="clearfix"></div>
 				</div>
-        <div class="col-sm-5 address-right">
+				<div class="col-sm-5 address-right">
 					<div class="col-xs-6 footer-grids">
 						<h3>Quick Links</h3>
 						<ul>
@@ -321,11 +342,14 @@
 						<h3>Get in Touch</h3>
 						<ul>
 							<li>
-								<i class="fa-solid fa-location-dot"></i> 123 Sebastian, USA.</li>
+								<i class="fa-solid fa-location-dot"></i> 123 Sebastian, USA.
+							</li>
 							<li>
-								<i class="fa-solid fa-mobile"></i> 333 222 3333 </li>
+								<i class="fa-solid fa-mobile"></i> 333 222 3333
+							</li>
 							<li>
-								<i class="fa-solid fa-phone"></i> +222 11 4444 </li>
+								<i class="fa-solid fa-phone"></i> +222 11 4444
+							</li>
 							<li>
 								<i class="fa-solid fa-envelope"></i>
 								<a href="mailto:example@mail.com"> mail@example.com</a>
@@ -340,18 +364,18 @@
 					<div class="social">
 						<ul>
 							<li>
-								<a class="icon fb" href="#">
-									<i class="fab fa-facebook fa-2x"></i>
+								<a class="icon fb">
+									<i class="fa-brands fa-facebook"></i>
 								</a>
 							</li>
 							<li>
 								<a class="icon tw" href="#">
-									<i class="fab fa-twitter fa-2x"></i>
+									<i class="fa-brands fa-twitter"></i>
 								</a>
 							</li>
 							<li>
 								<a class="icon gp" href="#">
-									<i class="fab fa-google-plus fa-2x"></i>
+									<i class="fa-brands fa-google-plus"></i>
 								</a>
 							</li>
 						</ul>
@@ -370,167 +394,172 @@
 				<!-- //social icons -->
 				<div class="clearfix"></div>
 			</div>
-    </div>
-	<div class="agile-sometext">
-		<div class="sub-some">
-			<h5>Online Grocery Shopping</h5>
-			<p>Order online. All your favourite products from the low price online supermarket for grocery home delivery in Delhi,
-				Gurgaon, Bengaluru, Mumbai and other cities in India. Lowest prices guaranteed on Patanjali, Aashirvaad, Pampers, Maggi,
-				Saffola, Huggies, Fortune, Nestle, Amul, MamyPoko Pants, Surf Excel, Ariel, Vim, Haldiram's and others.</p>
 		</div>
-		<div class="sub-some">
-			<h5>Shop online with the best deals & offers</h5>
-			<p>Now Get Upto 40% Off On Everyday Essential Products Shown On The Offer Page. The range includes Grocery, Personal Care,
-				Baby Care, Pet Supplies, Healthcare and Other Daily Need Products. Discount May Vary From Product To Product.</p>
+		<div class="agile-sometext">
+			<div class="sub-some">
+				<h5>Online Grocery Shopping</h5>
+				<p>Order online. All your favourite products from the low price online supermarket for grocery home
+					delivery in Delhi,
+					Gurgaon, Bengaluru, Mumbai and other cities in India. Lowest prices guaranteed on Patanjali,
+					Aashirvaad, Pampers, Maggi,
+					Saffola, Huggies, Fortune, Nestle, Amul, MamyPoko Pants, Surf Excel, Ariel, Vim, Haldiram's and
+					others.</p>
+			</div>
+			<div class="sub-some">
+				<h5>Shop online with the best deals & offers</h5>
+				<p>Now Get Upto 40% Off On Everyday Essential Products Shown On The Offer Page. The range includes
+					Grocery, Personal Care,
+					Baby Care, Pet Supplies, Healthcare and Other Daily Need Products. Discount May Vary From Product To
+					Product.</p>
+			</div>
+			<!-- brands -->
+			<div class="sub-some">
+				<h5>Popular Brands</h5>
+				<ul>
+					<li>
+						<a href="#">Aashirvaad</a>
+					</li>
+					<li>
+						<a href="#">Amul</a>
+					</li>
+					<li>
+						<a href="#">Bingo</a>
+					</li>
+					<li>
+						<a href="#">Boost</a>
+					</li>
+					<li>
+						<a href="#">Durex</a>
+					</li>
+					<li>
+						<a href="#"> Maggi</a>
+					</li>
+					<li>
+						<a href="#">Glucon-D</a>
+					</li>
+					<li>
+						<a href="#">Horlicks</a>
+					</li>
+					<li>
+						<a href="#">Head & Shoulders</a>
+					</li>
+					<li>
+						<a href="#">Dove</a>
+					</li>
+					<li>
+						<a href="#">Dettol</a>
+					</li>
+					<li>
+						<a href="#">Dabur</a>
+					</li>
+					<li>
+						<a href="#">Colgate</a>
+					</li>
+					<li>
+						<a href="#">Coca-Cola</a>
+					</li>
+					<li>
+						<a href="#">Closeup</a>
+					</li>
+					<li>
+						<a href="#"> Cinthol</a>
+					</li>
+					<li>
+						<a href="#">Cadbury</a>
+					</li>
+					<li>
+						<a href="#">Bru</a>
+					</li>
+					<li>
+						<a href="#">Bournvita</a>
+					</li>
+					<li>
+						<a href="#">Tang</a>
+					</li>
+					<li>
+						<a href="#">Pears</a>
+					</li>
+					<li>
+						<a href="#">Oreo</a>
+					</li>
+					<li>
+						<a href="#"> Taj Mahal</a>
+					</li>
+					<li>
+						<a href="#">Sprite</a>
+					</li>
+					<li>
+						<a href="#">Thums Up</a>
+					</li>
+					<li>
+						<a href="#">Fair & Lovely</a>
+					</li>
+					<li>
+						<a href="#">Lakme</a>
+					</li>
+					<li>
+						<a href="#">Tata</a>
+					</li>
+					<li>
+						<a href="#">Sunfeast</a>
+					</li>
+					<li>
+						<a href="#">Sunsilk</a>
+					</li>
+					<li>
+						<a href="#">Patanjali</a>
+					</li>
+					<li>
+						<a href="#">MTR</a>
+					</li>
+					<li>
+						<a href="#">Kissan</a>
+					</li>
+					<li>
+						<a href="#"> Lipton</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //brands -->
+			<!-- payment -->
+			<div class="sub-some child-momu">
+				<h5>Payment Method</h5>
+				<ul>
+					<li>
+						<img src="{% static 'app/images/pay2.png' %}" alt="">
+					</li>
+					<li>
+						<img src="{% static 'app/images/pay5.png' %}" alt="">
+					</li>
+					<li>
+						<img src="{% static 'app/images/pay1.png' %}" alt="">
+					</li>
+					<li>
+						<img src="{% static 'app/images/pay4.png' %}" alt="">
+					</li>
+					<li>
+						<img src="{% static 'app/images/pay6.png' %}" alt="">
+					</li>
+					<li>
+						<img src="{% static 'app/images/pay3.png' %}" alt="">
+					</li>
+					<li>
+						<img src="{% static 'app/images/pay7.png' %}" alt="">
+					</li>
+					<li>
+						<img src="{% static 'app/images/pay8.png' %}" alt="">
+					</li>
+					<li>
+						<img src="{% static 'app/images/pay9.png' %}" alt="">
+					</li>
+				</ul>
+			</div>
+			<!-- //payment -->
 		</div>
-		<!-- brands -->
-		<div class="sub-some">
-			<h5>Popular Brands</h5>
-			<ul>
-				<li>
-					<a href="#">Aashirvaad</a>
-				</li>
-				<li>
-					<a href="#">Amul</a>
-				</li>
-				<li>
-					<a href="#">Bingo</a>
-				</li>
-				<li>
-					<a href="#">Boost</a>
-				</li>
-				<li>
-					<a href="#">Durex</a>
-				</li>
-				<li>
-					<a href="#"> Maggi</a>
-				</li>
-				<li>
-					<a href="#">Glucon-D</a>
-				</li>
-				<li>
-					<a href="#">Horlicks</a>
-				</li>
-				<li>
-					<a href="#">Head & Shoulders</a>
-				</li>
-				<li>
-					<a href="#">Dove</a>
-				</li>
-				<li>
-					<a href="#">Dettol</a>
-				</li>
-				<li>
-					<a href="#">Dabur</a>
-				</li>
-				<li>
-					<a href="#">Colgate</a>
-				</li>
-				<li>
-					<a href="#">Coca-Cola</a>
-				</li>
-				<li>
-					<a href="#">Closeup</a>
-				</li>
-				<li>
-					<a href="#"> Cinthol</a>
-				</li>
-				<li>
-					<a href="#">Cadbury</a>
-				</li>
-				<li>
-					<a href="#">Bru</a>
-				</li>
-				<li>
-					<a href="#">Bournvita</a>
-				</li>
-				<li>
-					<a href="#">Tang</a>
-				</li>
-				<li>
-					<a href="#">Pears</a>
-				</li>
-				<li>
-					<a href="#">Oreo</a>
-				</li>
-				<li>
-					<a href="#"> Taj Mahal</a>
-				</li>
-				<li>
-					<a href="#">Sprite</a>
-				</li>
-				<li>
-					<a href="#">Thums Up</a>
-				</li>
-				<li>
-					<a href="#">Fair & Lovely</a>
-				</li>
-				<li>
-					<a href="#">Lakme</a>
-				</li>
-				<li>
-					<a href="#">Tata</a>
-				</li>
-				<li>
-					<a href="#">Sunfeast</a>
-				</li>
-				<li>
-					<a href="#">Sunsilk</a>
-				</li>
-				<li>
-					<a href="#">Patanjali</a>
-				</li>
-				<li>
-					<a href="#">MTR</a>
-				</li>
-				<li>
-					<a href="#">Kissan</a>
-				</li>
-				<li>
-					<a href="#"> Lipton</a>
-				</li>
-			</ul>
+		<!-- //footer fourth section (text) -->
 		</div>
-		<!-- //brands -->
-		<!-- payment -->
-		<div class="sub-some child-momu">
-			<h5>Payment Method</h5>
-			<ul>
-				<li>
-					<img src="{% static 'app/images/pay2.png' %}" alt="">
-				</li>
-				<li>
-					<img src="{% static 'app/images/pay5.png' %}" alt="">
-				</li>
-				<li>
-					<img src="{% static 'app/images/pay1.png' %}" alt="">
-				</li>
-				<li>
-					<img src="{% static 'app/images/pay4.png' %}" alt="">
-				</li>
-				<li>
-					<img src="{% static 'app/images/pay6.png' %}" alt="">
-				</li>
-				<li>
-					<img src="{% static 'app/images/pay3.png' %}" alt="">
-				</li>
-				<li>
-					<img src="{% static 'app/images/pay7.png' %}" alt="">
-				</li>
-				<li>
-					<img src="{% static 'app/images/pay8.png' %}" alt="">
-				</li>
-				<li>
-					<img src="{% static 'app/images/pay9.png' %}" alt="">
-				</li>
-			</ul>
-		</div>
-		<!-- //payment -->
-	</div>
-	<!-- //footer fourth section (text) -->
-</div>
-</footer>
-<!-- //footer -->
+	</footer>
+	<!-- //footer -->
 	<!-- copyright -->
 	<div class="copy-right">
 		<div class="container">
@@ -543,13 +572,17 @@
 
 
 
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	<!-- Jquery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<!-- Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+		crossorigin="anonymous"></script>
 
-    <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'app/js/all.min.js' %}"></script>
-    <script src="{% static 'app/js/myscript.js' %}"></script>
-  </body>
+	<script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'app/js/all.min.js' %}"></script>
+	<script src="{% static 'app/js/myscript.js' %}"></script>
+</body>
+
 </html>
