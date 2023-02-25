@@ -7,7 +7,7 @@ admin.site.register(Customer)
 
 @admin.register(Product)
 class ProductModelAdmin(admin.ModelAdmin):
-    list_display = ['id','title','selling_price','discounted_price','description','brand','category','product_image']
+    list_display = ['id','title','selling_price','specifications','discounted_price','description','brand','category','product_image']
 
 @admin.register(Cart)
 class CartModelAdmin(admin.ModelAdmin):
@@ -24,3 +24,7 @@ class OrderplacedModelAdmin(admin.ModelAdmin):
     def product_info(self,obj):
         link = reverse("admin:app_product_change", args=[obj.product.pk])
         return format_html('<a href="{}">{}</a>', link, obj.product.title)
+
+@admin.register(ReviewRating)
+class ProductReviewModelAdmin(admin.ModelAdmin):
+    list_display = ['id','user','product','subject','review','rating', 'ip', 'status', 'created_at', 'updated_at'] 

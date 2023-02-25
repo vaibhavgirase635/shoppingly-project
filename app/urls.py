@@ -74,6 +74,9 @@ urlpatterns = [
     path('logout/',auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('checkout/', views.checkout, name='checkout'),
     path('paymentdone/', views.payment_done, name='paymentdone'),
+
+    
+    path('submit_review/<int:product_id>/', views.submit_review, name='submit_review'),
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

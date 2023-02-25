@@ -47,3 +47,8 @@ class CustomerProfileForm(forms.ModelForm):
         {'class':'form-control'}),
         'zipcode':forms.NumberInput(attrs={'class':'form-control'})
  }
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = ReviewRating
+        fields = ['subject', 'review', 'rating']

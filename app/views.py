@@ -12,21 +12,29 @@ class ProductView(View):
         topwears = Product.objects.filter(category='TW')
         bottomwears = Product.objects.filter(category='BW')
         mobiles = Product.objects.filter(category='M')
+        nuts = Product.objects.filter(category='N')
+        oils = Product.objects.filter(category='CO')
+        pasta = Product.objects.filter(category='P')
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
         return render(request, 'app/home.html',{'topwears':topwears,'bottomwears':bottomwears,
-        'mobiles':mobiles, 'totalitem':totalitem})
+        'mobiles':mobiles, 'totalitem':totalitem, 'nuts':nuts, 'oils':oils, 'pasta':pasta})
 
 class ProductDetailView(View):
     def get(self, request, pk):
         totalitem = 0
         product = Product.objects.get(pk=pk)
+        review = ReviewRating.objects.filter(product=product, status=True)
         item_already_in_cart = False
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
             item_already_in_cart = Cart.objects.filter(Q(product=product.id) & Q(user=request.user)).exists()
+            try:
+                orderproduct = OrderPlaced.objects.filter(user=request.user, product=product).exists()
+            except OrderProduct.DoesNotExist:
+                orderproduct = None
         return render(request, 'app/productdetail.html',{'product':product, 'item_already_in_cart':item_already_in_cart,
-        'totalitem':totalitem})
+        'totalitem':totalitem, 'reviews':review, 'orderproduct':orderproduct})
 
 
 
@@ -301,3 +309,28 @@ class ProfileView(View):
             messages.success(request, 'Congratulations!! Profile Updated Successfully')
         return render(request, 'app/profile.html', {'form':form,'active':'btn-primary'})
 
+
+
+# My Reviews
+def submit_review(request, product_id):
+    url = request.META.get('HTTP_REFERER')
+    if request.method == 'POST':
+        try:
+            reviews = ReviewRating.objects.get(user__id=request.user.id, product__id=product_id)
+            form = ReviewForm(request.POST, instance=reviews)
+            form.save()
+            messages.success(request, 'Thank you! Your review has been updated.')
+            return redirect(url)
+        except ReviewRating.DoesNotExist:
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = ReviewRating()
+                data.subject = form.cleaned_data['subject']
+                data.rating = form.cleaned_data['rating']
+                data.review = form.cleaned_data['review']
+                data.ip = request.META.get('REMOTE_ADDR')
+                data.product_id = product_id
+                data.user_id = request.user.id
+                data.save()
+                messages.success(request, 'Thank you! Your review has been submitted.')
+                return redirect(url)

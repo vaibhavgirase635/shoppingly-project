@@ -4,7 +4,6 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
-
 html, body{
 	margin:0;
 	font-size: 100%;
@@ -365,10 +364,79 @@ button.w3view-cart {
 /*-- //cart details--*/
 /*-- //header-bottom --*/
 /*-- banner --*/
+.text{
+    font-family: montserrat;
+  } 
+  .carousel-item{
+    height: 600px;
+    min-height:200px;
+  }
+  .carousel-caption{
+    bottom: 300px;
+  }
+  .carousel-caption h3{
+    font-size: 70px;
+    text-transform: uppercase;
+    color: orangered;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    text-shadow: 3px 8px 2px rgb(12, 12, 12);
+    background: rgba(0, 0, 0, 0.34);
+  }
+  .carousel-caption p{
+    width: 100px;
+    margin: auto;
+    font-size: 18px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.54);
+    text-shadow: 3px 8px 2px rgb(12, 12, 12);
+  }
+  .carousel-caption a{
+    text-transform: uppercase;
+    text-decoration: none;
+    background: darkorange;
+    padding: 10px 30px;
+    display: inline-block;
+    color: #000;
+    margin-top: 10px;
+
+  }
+  @media only screen and (max-widgth: 767px){
+    .carousel-caption{
+      bottom: 225px;
+    }
+    .carousel-caption h3{
+      font-size: 10px;
+    }
+    .carousel-caption a{
+      padding: 10px 15px;
+      font-size: 1opx;
+    }
+  }
+  .carousel-item{
+    height: 100vh;
+    min-height:200px;
+  }
 
 /*-- carousel-slider --*/  
 /*-- banner-button --*/
-
+.button2 {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    background: #1accfd;
+    border-radius: 4px;
+    color: #fff;
+    letter-spacing: 2px;
+    padding: 11px 27px;
+    margin-top: 2em;
+}
+.button2:hover, .button2:focus{
+    background: #FF5722;
+    color:#fff;
+}
 /*-- //banner-button --*/
 /*-- //banner --*/
 /*-- top products --*/
@@ -844,8 +912,8 @@ span.item_price {
     margin-left: 13px;
     font-size: 15px;
 }
-.product-sec1.product-sec2{
-    background: url(../images/bg1.jpg)no-repeat 0px 0px;
+.product-sec2{
+    background: url(../static/app/images/bg1.jpg) no-repeat 0px 0px;
     background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
@@ -855,7 +923,7 @@ span.item_price {
     position: relative;
 }
 .effect-bg {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .effect-bg h3 {
     color: #fff;
@@ -874,8 +942,8 @@ span.item_price {
 }
 h3.w3l-nut-middle {
     position: absolute;
-    right: 30%;
-    bottom: 46%;
+    right: 40%;
+    bottom: 25%;
     font-size: 35px;
     font-weight: 800;
     color: rgba(10, 10, 10, 0.38);
@@ -1201,7 +1269,7 @@ p.footer-main span {
     text-align: center;
 }
 .social .fb{
-    background-color: blue;
+    background: #6788ce;
 }
 .social .tw{
     background: #00ACEE;
@@ -2561,7 +2629,70 @@ input[type="radio"], input[type="checkbox"] {
 /*-- //Payment page --*/
 
 /*--responsive--*/
-
+@media(max-width: 1440px){
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 4.5em;
+        padding: 28px 0;
+    }
+    .carousel-indicators {
+        left: 49.7%;
+    }
+    .dropdown-menu.columns-3 {
+        min-width: 588px;
+    }
+    .multi-gd-img {
+        float: left;
+        width: 50%;
+    }
+    .multi-gd-img img {
+        margin-top: 20px;
+    }
+}
+@media(max-width: 1366px){
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 4.2em;
+        padding: 20px 0;
+    }
+    .carousel-caption p {
+        font-size: 20px;
+        line-height: 1.5;
+    }
+    .carousel-indicators {
+        bottom:10%;
+    }
+    .carousel-indicators {
+        bottom: 9%;
+    }
+    .dropdown-menu.columns-3 {
+        min-width: 551px;
+    }
+}
+@media(max-width: 1280px){
+    .carousel-caption {
+        min-height: 550px;
+    }
+    .header-bot_inner_wthreeinfo_header_mid {
+        width: 96%;
+    }
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 4em;
+    }
+    .carousel-indicators {
+        bottom: 3%;
+    }
+    .footer-top h2 {
+        font-size: 32px;
+    }
+    .w3l-rightmk img {
+        width: 100%;
+    }
+    .page-head_agile_info_w3l {
+        min-height: 270px;
+    }
+    .dropdown-menu.columns-3 {
+        min-width: 509px;
+    }
+}
 @media(max-width: 1080px){
     .header-bot_inner_wthreeinfo_header_mid {
         width: 100%;
@@ -2587,11 +2718,23 @@ input[type="radio"], input[type="checkbox"] {
     .navbar-nav > li > a {
         padding: 15px 7px;
     }
-    
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 3.7em;
+    }
+    .carousel-caption p {
+        font-size: 18px;
+        letter-spacing: 4px;
+    }
+    .carousel-caption p span {
+        font-size: 34px;
+    }
     .button2 {
         font-size: 15px;
     }
-    
+    .carousel-caption {
+        min-height: 500px;
+        padding-top: 5.5em;
+    }
     .ads-grid, footer, .contact-w3l, .w3_wthree_agileits_icons, .typo, .faqs-w3l, .terms-of-use, .welcome, .about, .banner-bootom-w3-agileits, .privacy {
         padding: 4em 0;
     }
@@ -2734,7 +2877,10 @@ input[type="radio"], input[type="checkbox"] {
     }
 }
 @media(max-width: 1050px){
-    
+    .carousel-caption {
+        min-height: 450px;
+        padding-top: 5em;
+    }
     .button2 {
         margin-top: 1em;
     }
@@ -2760,7 +2906,9 @@ input[type="radio"], input[type="checkbox"] {
         font-size: 32px;
         margin-top: 16px;
     }
-    
+    .carousel-caption p {
+        line-height: 1;
+    }
     h3.tittle-w3l {
         font-size: 2.5em;
     }
@@ -2790,7 +2938,9 @@ input[type="radio"], input[type="checkbox"] {
     .page-head_agile_info_w3l {
         min-height: 250px;
     }
-    
+    .carousel-indicators {
+        left: 49.5%;
+    }
     .dropdown-menu.columns-3 {
         min-width: 416px;
         padding: 20px 0 20px 0px;
@@ -2836,11 +2986,24 @@ input[type="radio"], input[type="checkbox"] {
     .header-bot {
         padding: 10px 0 15px;
     }
-    
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 3.5em;
+        padding: 15px 0;
+    }
+    .carousel-caption p {
+        font-size: 16px;
+        letter-spacing: 3px;
+    }
+    .carousel-caption p span {
+        font-size: 31px;
+    }
     .button2 {
         font-size: 14px;
     }
-    
+    .carousel-caption {
+        min-height: 400px;
+        padding-top: 4.5em;
+    }
     .ads-grid, footer, .contact-w3l, .w3_wthree_agileits_icons, .typo, .faqs-w3l, .terms-of-use, .welcome, .about, .banner-bootom-w3-agileits, .privacy {
         padding: 3em 0;
     }
@@ -3040,7 +3203,9 @@ input[type="radio"], input[type="checkbox"] {
     .dropdown-menu.columns-3 {
         min-width: 295px;
     }
-    
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 3em;
+    }
     .w3l-specilamk {
         padding: 20px;
         margin: 0 14px;
@@ -3242,12 +3407,26 @@ input[type="radio"], input[type="checkbox"] {
     .agileits_search input[type="search"] {
         width: 86%;
     }
-    
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 2.8em;
+    }
+    .carousel-caption p {
+        font-size: 13px;
+    }
+    .carousel-caption p span {
+        font-size: 25px;
+    }
     .button2 {
         font-size: 13px;
         padding: 11px 20px;
     }
-    
+    .carousel-caption {
+        min-height: 350px;
+        padding-top: 3.5em;
+    }
+    .carousel-indicators {
+        bottom: 6%;
+    }
     h3.tittle-w3l {
         font-size: 2.3em;
     }
@@ -3401,7 +3580,13 @@ input[type="radio"], input[type="checkbox"] {
     .navbar-toggle {
         margin: 5px 0;
     }
-    
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 2.5em;
+    }
+    .carousel-caption {
+        min-height: 330px;
+        padding-top: 3em;
+    }
     .w3l-specilamk {
         margin: 0 8px;
     }
@@ -3579,7 +3764,13 @@ input[type="radio"], input[type="checkbox"] {
     .agileits_search input[type="search"] {
         width: 85%;
     }
-    
+    .carousel-caption p {
+        margin: 15px 0;
+    }
+    .carousel-caption {
+        min-height: 300px;
+        padding-top: 2.5em;
+    }
     .product-men {
         padding: 0 1em;
     }
@@ -3949,7 +4140,25 @@ input[type="radio"], input[type="checkbox"] {
     }
 }
 @media(max-width: 414px){
-    
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 2em;
+    }
+    .carousel-caption p {
+        font-size: 12px;
+    }
+    .carousel-caption p span {
+        font-size: 21px;
+    }
+    .carousel-caption p {
+        margin: 13px 0;
+    }
+    .carousel-caption {
+        min-height: 250px;
+        padding-top: 2em;
+    }
+    .carousel-indicators {
+        bottom: 2%;
+    }
     .ads-grid, footer, .contact-w3l, .w3_wthree_agileits_icons, .typo, .faqs-w3l, .terms-of-use, .welcome, .about, .banner-bootom-w3-agileits, .privacy {
         padding: 2em 0;
     }
@@ -4285,13 +4494,33 @@ input[type="radio"], input[type="checkbox"] {
         min-width: 163px;
         padding: 1px;
     }
-    
+    .carousel-caption h2, .carousel-caption h3 {
+        font-size: 1.6em;
+        padding: 10px 0;
+    }
+    .carousel-caption p {
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin: 9px 0;
+    }
     .button2 {
         padding: 7px 15px;
         letter-spacing: 1px;
     }
-    
-    
+    .carousel-caption p span {
+        font-size: 17px;
+    }
+    .carousel-caption {
+        min-height: 220px;
+    }
+    .carousel-indicators li {
+        width: 8px;
+        height: 8px;
+    }
+    .carousel-indicators .active {
+        width: 10px;
+        height: 10px;
+    }
     .ads-grid, footer, .contact-w3l, .w3_wthree_agileits_icons, .typo, .faqs-w3l, .terms-of-use, .welcome, .about, .banner-bootom-w3-agileits, .privacy {
         padding: 1.5em 0;
     }
@@ -4601,5 +4830,67 @@ input[type="radio"], input[type="checkbox"] {
     
 }
 
-   
-   
+/*--//responsive--*/
+/* Hide Radio button */
+.rate > input{
+    display: none;
+  }
+  
+  .rate{
+    display: inline-block;;
+    border: 0;
+  }
+  
+  .rate > label{
+    float: right;
+  }
+  
+  /* Showing the stars */
+  .rate > label:before{
+    display: inline-block;
+    font-size: 1.1rem;
+    font-family: FontAwesome;
+    content: "\f005";
+    margin:0;
+    padding:0.3rem .2rem;
+    cursor: pointer;
+  }
+  
+  
+  
+  /* Half star */
+  .rate .half:before{
+    content: "\f089";
+    position: absolute;
+    padding-right: 0;
+  }
+  
+  /* Click and hover */
+  input:checked ~ label, label:hover ~ label{
+    color: #ffb503;
+  }
+  
+  /* hover hightlight */
+  input:checked + label:hover, input:checked ~ label:hover,input:checked ~ label:hover ~ label,
+  label:hover ~ input:checked ~ label{
+    color: #cc9000;
+  }
+  
+  .rating-star i{
+    color: #ffb503 !important;
+  }
+  
+  ul.thumb{
+    margin:0 auto;
+    padding: 0;
+    float: left;
+  }
+  ul.thumb li{
+    list-style: none;
+    margin: 10px;
+  }
+  ul.thumb li img{
+    width: 80px;
+    height: 80px;
+    border: 1px solid grey;
+  }

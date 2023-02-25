@@ -8,135 +8,84 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <style>
-  .text {
-    font-family: montserrat;
-  }
-
-  .carousel-item {
-    height: 500px;
-    min-height: 200px;
-  }
-
-  .carousel-caption {
-    bottom: 220px;
-  }
-
-  .carousel-caption h1 {
-    font-size: 55px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 20px;
-    text-shadow: 3px 8px 2px rgb(12, 12, 12);
-    background: rgba(0, 0, 0, 0.34);
-  }
-
-  .carousel-caption p {
-    width: 100px;
-    margin: auto;
-    font-size: 18px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.54);
-    text-shadow: 3px 8px 2px rgb(12, 12, 12);
-  }
-
-  .carousel-caption a {
-    text-transform: uppercase;
-    text-decoration: none;
-    background: darkorange;
-    padding: 10px 30px;
-    display: inline-block;
-    color: #000;
-    margin-top: 10px;
-
-  }
-
-  @media only screen and (max-widgth: 767px) {
-    .carousel-caption {
-      bottom: 225px;
-    }
-
-    .carousel-caption h1 {
-      font-size: 10px;
-    }
-
-    .carousel-caption a {
-      padding: 10px 15px;
-      font-size: 10px;
-    }
-  }
-
-  .carousel-item {
-    height: 100vh;
-    min-height: 200px;
+  .carousel-slide {
+    border: 2px thick black;
   }
 </style>
-
 <br>
 {% block banner_slider %}
 <!--Banner Slider-->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators-->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-    <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-    <li data-target="#myCarousel" data-slide-to="3" class=""></li>
-  </ol>
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{% static 'app/images/banner/banner1.jpg' %}" class="d-block" alt="...">
-        <div class="carousel-caption">
-          <h1 class="animated bounceInRight text" style="animation-delay: 1s;">Big
-            <span>Save</span>
-          </h1>
-          <p class="animated bounceInLeft" style="animation-delay: 2s;">Get flat 10% Cashback</p>
-          <a class="animated bounceInRight" style="animation-delay: 3s;" href="product.html">Shop Now </a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'app/images/banner/banner2.jpg' %}" class="d-block" alt="...">
-        <div class="carousel-caption">
-          <h1 class="animated bounceInRight" style="animation-delay: 1s;">Healthy
-            <span>Saving</span>
-          </h1>
-          <p class="animated bounceInLeft" style="animation-delay: 2s;">Get Upto <span>30%</span> Off</p>
-          <a class="animated bounceInRight" style="animation-delay: 3s;" href="#">Shop Now </a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'app/images/banner/banner3.jpg' %}" class="d-block" alt="...">
-        <div class="carousel-caption">
-          <h1 class="animated bounceInRight" style="animation-delay: 1s;">Big
-            <span>Deal</span>
-          </h1>
-          <p class="animated bounceInLeft" style="animation-delay: 2s;">Get Best Offer Upto <span>20%</span>
-          </p>
-          <a class="animated bounceInRight" style="animation-delay: 3s;" href="#">Shop Now </a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'app/images/banner/banner4.jpg' %}" class="d-block" alt="...">
-        <div class="carousel-caption">
-          <h1 class="animated bounceInRight" style="animation-delay: 1s;">Today <span>Discount</span>
-          </h1>
-          <p class="animated bounceInLeft" style="animation-delay: 2s;">Get Now
-            <span>40%</span> Discount
-          </p>
-          <a class="animated bounceInRight" style="animation-delay: 3s;" href="#">Shop Now </a>
-        </div>
+
+<!-- Indicators-->
+
+<div id="carouselExampleControls" class="carousel-slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'app/images/banner/banner1.jpg' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption">
+        <h3>Big
+          <span>Save</span>
+        </h3>
+        <p>Get flat
+          <span>10%</span> Cashback
+        </p>
+        <a class="button2" href="#">Shop Now </a>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </a>
+    <div class="carousel-item">
+      <img src="{% static 'app/images/banner/banner2.jpg' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption">
+        <h3>Healthy
+          <span>Safe</span>
+        </h3>
+        <p>Get Upto
+          <span>30%</span> Off
+        </p>
+        <a class="button2" href="#">Shop Now </a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/images/banner/banner3.jpg' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption">
+        <h3>Big
+          <span>Deal</span>
+        </h3>
+        <p>Get Best Offer Upto
+          <span>20%</span>
+        </p>
+        <a class="button2" href="#">Shop Now </a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/images/banner/banner4.jpg' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption">
+        <h3>Today
+          <span>Discount</span>
+        </h3>
+        <p>Get Now
+          <span>40%</span> Discount
+        </p>
+        <a class="button2" href="#">Shop Now </a>
+      </div>
+    </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
 </div>
+
 <!-- End Banner Slider -->
 {% endblock banner_slider %}
 
@@ -163,7 +112,8 @@
         <i></i>
         <i></i>
       </span>
-    </h3><!-- //tittle heading -->
+    </h3>
+    <!-- //tittle heading -->
     <!-- product left -->
     <div class="side-bar col-md-3">
       <div class="search-hotel">
@@ -344,7 +294,7 @@
           </div>
           <div class="col-xs-8 img-deal1">
             <h3>Lay's Potato Chips</h3>
-            <a href="single.html">$18.00</a>
+            <a href="#">$18.00</a>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -354,7 +304,7 @@
           </div>
           <div class="col-xs-8 img-deal1">
             <h3>Bingo Mad Angles</h3>
-            <a href="single.html">$9.00</a>
+            <a href="#">$9.00</a>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -364,7 +314,7 @@
           </div>
           <div class="col-xs-8 img-deal1">
             <h3>Tata Salt</h3>
-            <a href="single.html">$15.00</a>
+            <a href="#">$15.00</a>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -374,7 +324,7 @@
           </div>
           <div class="col-xs-8 img-deal1">
             <h3>Gujarat Dry Fruit</h3>
-            <a href="single.html">$525.00</a>
+            <a href="#">$525.00</a>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -384,7 +334,7 @@
           </div>
           <div class="col-xs-8 img-deal1">
             <h3>Cadbury Dairy Milk</h3>
-            <a href="single.html">$149.00</a>
+            <a href="#">$149.00</a>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -397,412 +347,150 @@
       <div class="wrapper">
         <!-- first section (nuts) -->
         <div class="product-sec1">
+
           <h3 class="heading-tittle">Nuts</h3>
+
+          {% for n in nuts %}
           <div class="col-md-4 product-men">
+            
             <div class="men-pro-item simpleCart_shelfItem">
+
               <div class="men-thumb-item">
-                <img src="{% static 'app/images/m1.jpg' %}" alt="">
+                
+                  <img src="{{n.product_image.url}}" alt="">
+                
                 <div class="men-cart-pro">
                   <div class="inner-men-cart-pro">
-                    <a href="#" class="link-product-add-cart">Quick View</a>
+                    <a href="{% url 'product-detail' n.id %}" class="link-product-add-cart">Quick View</a>
                   </div>
                 </div>
                 <span class="product-new-top">New</span>
               </div>
               <div class="item-info-product ">
                 <h4>
-                  <a href="#">Almonds, 100g</a>
+                  {{n.title}}
                 </h4>
                 <div class="info-product-price">
-                  <span class="item_price">$149.00</span>
-                  <del>$280.00</del>
+                  <span class="item_price">{{n.discounted_price}}</span>
+                  <del>{{n.selling_price}}</del>
                 </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart" />
-                      <input type="hidden" name="add" value="1" />
-                      <input type="hidden" name="business" value=" " />
-                      <input type="hidden" name="item_name" value="Almonds, 100g" />
-                      <input type="hidden" name="amount" value="149.00" />
-                      <input type="hidden" name="discount_amount" value="1.00" />
-                      <input type="hidden" name="currency_code" value="USD" />
-                      <input type="hidden" name="return" value=" " />
-                      <input type="hidden" name="cancel_return" value=" " />
-                      <input type="submit" name="submit" value="Add to cart" class="button" />
-                    </fieldset>
-                  </form>
-                </div>
-
+              
+                
               </div>
             </div>
+          
           </div>
-          <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <img src="{% static 'app/images/m2.jpg' %}" alt="">
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
-                    <a href="#" class="link-product-add-cart">Quick View</a>
-                  </div>
-                </div>
-                <span class="product-new-top">New</span>
-
-              </div>
-              <div class="item-info-product ">
-                <h4>
-                  <a href="#">Cashew Nuts, 100g</a>
-                </h4>
-                <div class="info-product-price">
-                  <span class="item_price">$200.00</span>
-                  <del>$420.00</del>
-                </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart" />
-                      <input type="hidden" name="add" value="1" />
-                      <input type="hidden" name="business" value=" " />
-                      <input type="hidden" name="item_name" value="Cashew Nuts, 100g" />
-                      <input type="hidden" name="amount" value="200.00" />
-                      <input type="hidden" name="discount_amount" value="1.00" />
-                      <input type="hidden" name="currency_code" value="USD" />
-                      <input type="hidden" name="return" value=" " />
-                      <input type="hidden" name="cancel_return" value=" " />
-                      <input type="submit" name="submit" value="Add to cart" class="button" />
-                    </fieldset>
-                  </form>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <img src="{% static 'app/images/m3.jpg' %}" alt="">
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
-                    <a href="#" class="link-product-add-cart">Quick View</a>
-                  </div>
-                </div>
-                <span class="product-new-top">New</span>
-
-              </div>
-              <div class="item-info-product ">
-                <h4>
-                  <a href="#">Pista..., 250g</a>
-                </h4>
-                <div class="info-product-price">
-                  <span class="item_price">$520.99</span>
-                  <del>$600.99</del>
-                </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart" />
-                      <input type="hidden" name="add" value="1" />
-                      <input type="hidden" name="business" value=" " />
-                      <input type="hidden" name="item_name" value="Pista, 250g" />
-                      <input type="hidden" name="amount" value="520.99" />
-                      <input type="hidden" name="discount_amount" value="1.00" />
-                      <input type="hidden" name="currency_code" value="USD" />
-                      <input type="hidden" name="return" value=" " />
-                      <input type="hidden" name="cancel_return" value=" " />
-                      <input type="submit" name="submit" value="Add to cart" class="button" />
-                    </fieldset>
-                  </form>
-                </div>
-
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
-        <div class="product-sec1 product-sec2">
-          <div class="col-xs-7 effect-bg">
-            <h3 class="">Pure Energy</h3>
-            <h6>Enjoy our all healthy Products</h6>
-            <p>Get Extra 10% Off</p>
-          </div>
-          <h3 class="w3l-nut-middle">Nuts & Dry Fruits</h3>
-          <div class="col-xs-5 bg-right-nut">
-            <img src="{% static 'app/images/nut1.png' %}" alt="">
-          </div>
-          <div class="clearfix"></div>
-        </div>
-        <!-- //second section (nuts special) -->
-        <!-- third section (oils) -->
-        <div class="product-sec1">
-          <h3 class="heading-tittle">Oils</h3>
-          <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <img src="{% static 'app/images/product/mk4.jpg' %}" alt="">
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
-                    <a href="#" class="link-product-add-cart">Quick View</a>
+        <!-- second section (nuts special) -->
+					<div class="product-sec2">
+						<div class="col-xs-7 effect-bg">
+							<h3 class="">Pure Energy</h3>
+							<h6>Enjoy our all healthy Products</h6>
+							<p>Get Extra 10% Off</p>
+						</div>
+						<h3 class="w3l-nut-middle">Nuts & Dry Fruits</h3>
+						<div class="col-xs-5 bg-right-nut">
+							<img src="{% static 'app/images/nut1.png' %}" alt="">
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<!-- //second section (nuts special) -->
+          <br>
+          <!-- third section (oils) -->
+          <div class="product-sec1">
+            <h3 class="heading-tittle">Oils</h3>
+            {% for oil in oils %}
+            <div class="col-md-4 product-men">
+              <div class="men-pro-item simpleCart_shelfItem">
+                <div class="men-thumb-item">
+                  <img src="{{oil.product_image.url}}" alt="">
+                  <div class="men-cart-pro">
+                    <div class="inner-men-cart-pro">
+                      <a href="{% url 'product-detail' oil.id %}" class="link-product-add-cart">Quick View</a>
+                    </div>
                   </div>
+                  <span class="product-new-top">New</span>
                 </div>
-                <span class="product-new-top">New</span>
-              </div>
-              <div class="item-info-product ">
-                <h4>
-                  <a href="#">Freedom Oil, 1L</a>
-                </h4>
-                <div class="info-product-price">
-                  <span class="item_price">$78.00</span>
-                  <del>$110.00</del>
-                </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart" />
-                      <input type="hidden" name="add" value="1" />
-                      <input type="hidden" name="business" value=" " />
-                      <input type="hidden" name="item_name" value="Freedom Sunflower Oil, 1L" />
-                      <input type="hidden" name="amount" value="78.00" />
-                      <input type="hidden" name="discount_amount" value="1.00" />
-                      <input type="hidden" name="currency_code" value="USD" />
-                      <input type="hidden" name="return" value=" " />
-                      <input type="hidden" name="cancel_return" value=" " />
-                      <input type="submit" name="submit" value="Add to cart" class="button" />
-                    </fieldset>
-                  </form>
-                </div>
+                <div class="item-info-product ">
+                  <h4>
+                    <a href="#">{{oil.title}}</a>
+                  </h4>
+                  <div class="info-product-price">
+                    <span class="item_price">{{oil.selling_price}}</span>
+                    <del>{{oil.discounted_price}}</del>
+                  </div>
+                  
 
+                </div>
               </div>
             </div>
+            {% endfor %}
+            
+            <div class="clearfix"></div>
           </div>
-          <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <img src="{% static 'app/images/product/mk5.jpg' %}" alt="">
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
-                    <a href="#" class="link-product-add-cart">Quick View</a>
+          <!-- //third section (oils) -->
+          <!-- fourth section (noodles) -->
+          <div class="product-sec1">
+            <h3 class="heading-tittle">Pasta & Noodles</h3>
+            {% for p in pasta %}
+            <div class="col-md-4 product-men">
+              <div class="men-pro-item simpleCart_shelfItem">
+                <div class="men-thumb-item">
+                  <img src="{{p.product_image.url}}" alt="">
+                  <div class="men-cart-pro">
+                    <div class="inner-men-cart-pro">
+                      <a href="{% url 'product-detail' p.id %}" class="link-product-add-cart">Quick View</a>
+                    </div>
+                    <span class="product-new-top">New</span>
                   </div>
                 </div>
-                <span class="product-new-top">New</span>
-
-              </div>
-              <div class="item-info-product ">
-                <h4>
-                  <a href="#">Saffola Gold, 1L</a>
-                </h4>
-                <div class="info-product-price">
-                  <span class="item_price">$130.00</span>
-                  <del>$150.00</del>
-                </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart" />
-                      <input type="hidden" name="add" value="1" />
-                      <input type="hidden" name="business" value=" " />
-                      <input type="hidden" name="item_name" value="Saffola Gold, 1L" />
-                      <input type="hidden" name="amount" value="130.00" />
-                      <input type="hidden" name="discount_amount" value="1.00" />
-                      <input type="hidden" name="currency_code" value="USD" />
-                      <input type="hidden" name="return" value=" " />
-                      <input type="hidden" name="cancel_return" value=" " />
-                      <input type="submit" name="submit" value="Add to cart" class="button" />
-                    </fieldset>
-                  </form>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <img src="{% static 'app/images/product/mk6.jpg' %}" alt="">
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
-                    <a href="#" class="link-product-add-cart">Quick View</a>
+                <div class="item-info-product ">
+                  <h4>
+                    <a href="#">{{p.title}}</a>
+                  </h4>
+                  <div class="info-product-price">
+                    <span class="item_price">{{p.discounted_price}}</span>
+                    <del>{{p.selling_price}}</del>
                   </div>
-                </div>
-                <span class="product-new-top">New</span>
+                  
 
-              </div>
-              <div class="item-info-product ">
-                <h4>
-                  <a href="#">Fortune Oil, 5L</a>
-                </h4>
-                <div class="info-product-price">
-                  <span class="item_price">$399.99</span>
-                  <del>$500.00</del>
                 </div>
-                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                  <form action="#" method="post">
-                    <fieldset>
-                      <input type="hidden" name="cmd" value="_cart" />
-                      <input type="hidden" name="add" value="1" />
-                      <input type="hidden" name="business" value=" " />
-                      <input type="hidden" name="item_name" value="Fortune Oil, 5L" />
-                      <input type="hidden" name="amount" value="399.99" />
-                      <input type="hidden" name="discount_amount" value="1.00" />
-                      <input type="hidden" name="currency_code" value="USD" />
-                      <input type="hidden" name="return" value=" " />
-                      <input type="hidden" name="cancel_return" value=" " />
-                      <input type="submit" name="submit" value="Add to cart" class="button" />
-                    </fieldset>
-                  </form>
-                </div>
-
               </div>
             </div>
+            {% endfor %}
+            <div class="clearfix"></div>
           </div>
-          <div class="clearfix"></div>
-        </div>
+          <!-- //fourth section (noodles) -->
+        
       </div>
-
-      <!-- fourth section (noodles) -->
-      <div class="product-sec1">
-        <h3 class="heading-tittle">Pasta & Noodles</h3>
-        <div class="col-md-4 product-men">
-          <div class="men-pro-item simpleCart_shelfItem">
-            <div class="men-thumb-item">
-              <img src="{% static 'app/images/mk7.jpg' %}" alt="">
-              <div class="men-cart-pro">
-                <div class="inner-men-cart-pro">
-                  <a href="#" class="link-product-add-cart">Quick View</a>
-                </div>
-              </div>
-            </div>
-            <div class="item-info-product ">
-              <h4>
-                <a href="#">Yippee Noodles, 65g</a>
-              </h4>
-              <div class="info-product-price">
-                <span class="item_price">$15.00</span>
-                <del>$25.00</del>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="YiPPee Noodles, 65g" />
-                    <input type="hidden" name="amount" value="15.00" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 product-men">
-          <div class="men-pro-item simpleCart_shelfItem">
-            <div class="men-thumb-item">
-              <img src="{% static 'app/images/mk8.jpg' %}" alt="">
-              <div class="men-cart-pro">
-                <div class="inner-men-cart-pro">
-                  <a href="#" class="link-product-add-cart">Quick View</a>
-                </div>
-              </div>
-              <span class="product-new-top">New</span>
-
-            </div>
-            <div class="item-info-product ">
-              <h4>
-                <a href="#">Wheat Pasta, 500g</a>
-              </h4>
-              <div class="info-product-price">
-                <span class="item_price">$98.00</span>
-                <del>$120.00</del>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Wheat Pasta, 500g" />
-                    <input type="hidden" name="amount" value="98.00" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 product-men">
-          <div class="men-pro-item simpleCart_shelfItem">
-            <div class="men-thumb-item">
-              <img src="{% static 'app/images/mk9.jpg' %}" alt="">
-              <div class="men-cart-pro">
-                <div class="inner-men-cart-pro">
-                  <a href="#" class="link-product-add-cart">Quick View</a>
-                </div>
-              </div>
-              <span class="product-new-top">New</span>
-
-            </div>
-            <div class="item-info-product ">
-              <h4>
-                <a href="#">Chinese Noodles, 68g</a>
-              </h4>
-              <div class="info-product-price">
-                <span class="item_price">$11.99</span>
-                <del>$15.00</del>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Chinese Noodles, 68g" />
-                    <input type="hidden" name="amount" value="11.99" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-      <!-- //fourth section (noodles) -->
+      <!-- //product right -->
     </div>
+  
+  <!-- //top products -->
+
+  <div class="m-3">
+    <h2>ShoppinglyX Bottom Wears</h2>
+    <!-- Slider 1 -->
+    <div class="owl-carousel" id="slider1">
+      {% for b in bottomwears %}
+      <a href="{% url 'product-detail' b.id %}" class="btn">
+
+        <div class="item"><img src="{{ b.product_image.url }}" alt="" height="200px"><span
+            class="fw-bold">{{b.title}}</span><br><span class="fs-5">Rs. {{b.discounted_price}}</span>
+          <br>
+          <form action="/add-to-cart" class="d-inline">
+
+            <input type="hidden" name="prod_id" value="{{b.id}}" id="prod_id">
+            <button type="submit" class="btn btn-info btn-lg">Add To Cart</button>
+          </form>
+        </div>
+      </a>
+
+      {% endfor %}
+    </div>
+
   </div>
-  <!-- //product right -->
-</div>
-</div>
-<!-- //top products -->
-
-<div class="m-3">
-  <h2>ShoppinglyX Bottom Wears</h2>
-  <!-- Slider 1 -->
-  <div class="owl-carousel" id="slider1">
-    {% for b in bottomwears %}
-    <a href="{% url 'product-detail' b.id %}" class="btn">
-
-      <div class="item"><img src="{{ b.product_image.url }}" alt="" height="200px"><span
-          class="fw-bold">{{b.title}}</span><br><span class="fs-5">Rs. {{b.discounted_price}}</span></div>
-    </a>
-
-    {% endfor %}
-  </div>
-
-</div>
 </div>
 <!-- End 1st Product Slider -->
 
@@ -850,6 +538,12 @@
     <a href="{% url 'product-detail' tp.id %}" class="btn">
       <div class="item"><img src="{{tp.product_image.url}}" alt="" height="200px"><span
           class="fw-bold">{{tp.title}}</span><br><span class="fs-5">Rs. {{tp.discounted_price}}</span>
+        <br>
+        <form action="/add-to-cart" class="d-inline">
+
+          <input type="hidden" name="prod_id" value="{{tp.id}}" id="prod_id">
+          <button type="submit" class="btn btn-info btn-lg">Add To Cart</button>
+        </form>
       </div>
     </a>
     {% endfor %}
@@ -864,6 +558,12 @@
     <a href="{% url 'product-detail' m.id %}" class="btn">
       <div class="item"><img src="{{m.product_image.url}}" alt="" height="200px"><span
           class="fw-bold">{{m.title}}</span><br><span class="fs-5">Rs. {{m.discounted_price}}</span>
+        <br>
+        <form action="/add-to-cart" class="d-inline">
+
+          <input type="hidden" name="prod_id" value="{{m.id}}" id="prod_id">
+          <button type="submit" class="btn btn-info btn-lg">Add To Cart</button>
+        </form>
       </div>
     </a>
     {% endfor %}
@@ -886,13 +586,13 @@
         <li>
           <div class="w3l-specilamk">
             <div class="speioffer-agile">
-              <a href="single.html">
+              <a href="#">
                 <img src="{% static 'app/images/s1.jpg' %}" alt="">
               </a>
             </div>
             <div class="product-name-w3l">
               <h4>
-                <a href="single.html">Aashirvaad, 5g</a>
+                <a href="#">Aashirvaad, 5g</a>
               </h4>
               <div class="w3l-pricehkj">
                 <h6>$220.00</h6>
@@ -920,13 +620,13 @@
         <li>
           <div class="w3l-specilamk">
             <div class="speioffer-agile">
-              <a href="single.html">
+              <a href="#">
                 <img src="{% static 'app/images/s4.jpg' %}" alt="">
               </a>
             </div>
             <div class="product-name-w3l">
               <h4>
-                <a href="single.html">Kissan Tomato Ketchup, 950g</a>
+                <a href="#">Kissan Tomato Ketchup, 950g</a>
               </h4>
               <div class="w3l-pricehkj">
                 <h6>$99.00</h6>
@@ -954,13 +654,13 @@
         <li>
           <div class="w3l-specilamk">
             <div class="speioffer-agile">
-              <a href="single.html">
+              <a href="#">
                 <img src="{% static 'app/images/s2.jpg' %}" alt="">
               </a>
             </div>
             <div class="product-name-w3l">
               <h4>
-                <a href="single.html">Madhur Pure Sugar, 1g</a>
+                <a href="#">Madhur Pure Sugar, 1g</a>
               </h4>
               <div class="w3l-pricehkj">
                 <h6>$69.00</h6>
@@ -1022,13 +722,13 @@
         <li>
           <div class="w3l-specilamk">
             <div class="speioffer-agile">
-              <a href="single.html">
+              <a href="#">
                 <img src="{% static 'app/images/s8.jpg' %}" alt="">
               </a>
             </div>
             <div class="product-name-w3l">
               <h4>
-                <a href="single.html">Cadbury Choclairs, 655.5g</a>
+                <a href="#">Cadbury Choclairs, 655.5g</a>
               </h4>
               <div class="w3l-pricehkj">
                 <h6>$160.00</h6>
@@ -1090,13 +790,13 @@
         <li>
           <div class="w3l-specilamk">
             <div class="speioffer-agile">
-              <a href="single.html">
+              <a href="#">
                 <img src="{% static 'app/images/s5.jpg' %}" alt="">
               </a>
             </div>
             <div class="product-name-w3l">
               <h4>
-                <a href="single.html">Sprite, 2.25L (Pack of 2)</a>
+                <a href="#">Sprite, 2.25L (Pack of 2)</a>
               </h4>
               <div class="w3l-pricehkj">
                 <h6>$180.00</h6>
