@@ -15,10 +15,11 @@ class ProductView(View):
         nuts = Product.objects.filter(category='N')
         oils = Product.objects.filter(category='CO')
         pasta = Product.objects.filter(category='P')
+        special = Product.objects.filter(category='SO')
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
         return render(request, 'app/home.html',{'topwears':topwears,'bottomwears':bottomwears,
-        'mobiles':mobiles, 'totalitem':totalitem, 'nuts':nuts, 'oils':oils, 'pasta':pasta})
+        'mobiles':mobiles, 'totalitem':totalitem, 'nuts':nuts, 'oils':oils, 'pasta':pasta, 'Special':special})
 
 class ProductDetailView(View):
     def get(self, request, pk):
@@ -26,13 +27,14 @@ class ProductDetailView(View):
         product = Product.objects.get(pk=pk)
         review = ReviewRating.objects.filter(product=product, status=True)
         item_already_in_cart = False
-        if request.user.is_authenticated:
-            totalitem = len(Cart.objects.filter(user=request.user))
-            item_already_in_cart = Cart.objects.filter(Q(product=product.id) & Q(user=request.user)).exists()
-            try:
-                orderproduct = OrderPlaced.objects.filter(user=request.user, product=product).exists()
-            except OrderProduct.DoesNotExist:
-                orderproduct = None
+        if not request.user.is_authenticated:
+            return redirect('login')
+        totalitem = len(Cart.objects.filter(user=request.user))
+        item_already_in_cart = Cart.objects.filter(Q(product=product.id) & Q(user=request.user)).exists()
+        try:
+            orderproduct = OrderPlaced.objects.filter(user=request.user, product=product).exists()
+        except OrderPlaced.DoesNotExist:
+            orderproduct = None
         return render(request, 'app/productdetail.html',{'product':product, 'item_already_in_cart':item_already_in_cart,
         'totalitem':totalitem, 'reviews':review, 'orderproduct':orderproduct})
 

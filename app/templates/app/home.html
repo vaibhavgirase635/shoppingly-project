@@ -18,69 +18,70 @@
 
 <!-- Indicators-->
 
-<div id="carouselExampleControls" class="carousel-slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-      aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-  </div>
+<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false" data-bs-ride="carousel">
+  
   <div class="carousel-inner">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
     <div class="carousel-item active">
-      <img src="{% static 'app/images/banner/banner1.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'app/images/banner/banner1.jpg' %}" class="d-block w-100" height="600" alt="...">
       <div class="carousel-caption">
         <h3>Big
           <span>Save</span>
-        </h3>
+        </h3><br>
         <p>Get flat
           <span>10%</span> Cashback
-        </p>
+        </p><br>
         <a class="button2" href="#">Shop Now </a>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{% static 'app/images/banner/banner2.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'app/images/banner/banner2.jpg' %}" class="d-block w-100" height="600" alt="...">
       <div class="carousel-caption">
-        <h3>Healthy
+        <h3>Healthy &
           <span>Safe</span>
-        </h3>
+        </h3><br>
         <p>Get Upto
           <span>30%</span> Off
-        </p>
+        </p><br>
         <a class="button2" href="#">Shop Now </a>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{% static 'app/images/banner/banner3.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'app/images/banner/banner3.jpg' %}" class="d-block w-100" height="600" alt="...">
       <div class="carousel-caption">
         <h3>Big
           <span>Deal</span>
-        </h3>
+        </h3><br>
         <p>Get Best Offer Upto
           <span>20%</span>
-        </p>
+        </p><br>
         <a class="button2" href="#">Shop Now </a>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{% static 'app/images/banner/banner4.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'app/images/banner/banner4.jpg' %}" class="d-block w-100" height="600" alt="...">
       <div class="carousel-caption">
-        <h3>Today
+        <h3>Today's
           <span>Discount</span>
-        </h3>
+        </h3><br>
         <p>Get Now
           <span>40%</span> Discount
-        </p>
+        </p><br>
         <a class="button2" href="#">Shop Now </a>
       </div>
     </div>
+    
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+  <a class="carousel-control-prev" data-bs-target="#carouselExampleControlsNoTouching" type="button" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+  <a class="carousel-control-next" data-bs-target="#carouselExampleControlsNoTouching" type="button" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </a>
@@ -103,6 +104,91 @@
 
 {% block main-content %}
 <!-- 1st Product Slider -->
+<div class="m-3">
+  <h2>ShoppinglyX Bottom Wears</h2>
+  <!-- Slider 1 -->
+  <div class="owl-carousel" id="slider1">
+    {% for b in bottomwears %}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+
+      <div class="item"><img src="{{ b.product_image.url }}" alt="" height="200px"><span
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5">Rs. {{b.discounted_price}}</span>
+        <br>
+      </div>
+    </a>
+
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- End 1st Product Slider -->
+
+<!-- Payment Info Section -->
+<div class="container my-5">
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card mb-3">
+      <div class="card-body">
+        <img src="{% static 'app/images/payavail/cc.jpg' %}" alt="" srcset="" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card mb-3">
+      <div class="card-body">
+        <img src="{% static 'app/images/payavail/upi.jpg' %}" alt="" srcset="" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card mb-3">
+      <div class="card-body">
+        <img src="{% static 'app/images/payavail/nb.jpg' %}" alt="" srcset="" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card mb-3">
+      <div class="card-body">
+        <img src="{% static 'app/images/payavail/bj.jpg' %}" alt="" srcset="" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Payment Info Section -->
+
+<!-- 2nd Product Slider -->
+<div class="mx-3">
+  <h2>ShoppingX Top Wears</h2>
+  <!-- Slider 2 -->
+  <div class="owl-carousel" id="slider2">
+    {% for tp in topwears %}
+    <a href="{% url 'product-detail' tp.id %}" class="btn">
+      <div class="item"><img src="{{tp.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{tp.title}}</span><br><span class="fs-5">Rs. {{tp.discounted_price}}</span>
+        <br>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<!-- End 2nd Product Slider -->
+
+<div class="mx-3">
+  <h2>ShoppingX Mobiles</h2>
+  <div class="owl-carousel" id="slider3">
+    {% for m in mobiles %}
+    <a href="{% url 'product-detail' m.id %}" class="btn">
+      <div class="item"><img src="{{m.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{m.title}}</span><br><span class="fs-5">Rs. {{m.discounted_price}}</span>
+        <br>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
 <div class="ads-grid">
   <div class="container">
     <!-- tittle heading -->
@@ -119,6 +205,7 @@
       <div class="search-hotel">
         <h3 class="agileits-sear-head">Search Here..</h3>
         <form action="#" method="post">
+          {% csrf_token %}
           <input type="search" placeholder="Product name..." name="search" required="">
           <input type="submit" value=" ">
         </form>
@@ -128,7 +215,6 @@
         <h3 class="agileits-sear-head">Price range</h3>
         <ul class="dropdown-menu6">
           <li>
-
             <div id="slider-range"></div>
             <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
           </li>
@@ -347,18 +433,12 @@
       <div class="wrapper">
         <!-- first section (nuts) -->
         <div class="product-sec1">
-
           <h3 class="heading-tittle">Nuts</h3>
-
           {% for n in nuts %}
           <div class="col-md-4 product-men">
-            
             <div class="men-pro-item simpleCart_shelfItem">
-
               <div class="men-thumb-item">
-                
-                  <img src="{{n.product_image.url}}" alt="">
-                
+                <img src="{{n.product_image.url}}" alt="">
                 <div class="men-cart-pro">
                   <div class="inner-men-cart-pro">
                     <a href="{% url 'product-detail' n.id %}" class="link-product-add-cart">Quick View</a>
@@ -368,22 +448,20 @@
               </div>
               <div class="item-info-product ">
                 <h4>
-                  {{n.title}}
+                  <a href="{% url 'product-detail' n.id %}">{{n.title}}</a>
                 </h4>
                 <div class="info-product-price">
-                  <span class="item_price">{{n.discounted_price}}</span>
-                  <del>{{n.selling_price}}</del>
+                  <span class="item_price">Rs. {{n.discounted_price}}</span>
+                  <del>Rs. {{n.selling_price}}</del>
                 </div>
-              
-                
-              </div>
+              </div> 
             </div>
-          
-          </div>
-          {% endfor %}
+          </div>   
+          {% endfor %}    
+          <div class="clearfix"></div>
         </div>
         <!-- second section (nuts special) -->
-					<div class="product-sec2">
+					<div class="product-sec1 product-sec2">
 						<div class="col-xs-7 effect-bg">
 							<h3 class="">Pure Energy</h3>
 							<h6>Enjoy our all healthy Products</h6>
@@ -396,468 +474,97 @@
 						<div class="clearfix"></div>
 					</div>
 					<!-- //second section (nuts special) -->
-          <br>
-          <!-- third section (oils) -->
-          <div class="product-sec1">
-            <h3 class="heading-tittle">Oils</h3>
-            {% for oil in oils %}
-            <div class="col-md-4 product-men">
-              <div class="men-pro-item simpleCart_shelfItem">
-                <div class="men-thumb-item">
-                  <img src="{{oil.product_image.url}}" alt="">
-                  <div class="men-cart-pro">
-                    <div class="inner-men-cart-pro">
-                      <a href="{% url 'product-detail' oil.id %}" class="link-product-add-cart">Quick View</a>
-                    </div>
+       
+      
+        <!-- third section (oils) -->
+        <div class="product-sec1">
+          <h3 class="heading-tittle">Oils</h3>
+          {% for oil in oils %}
+          <div class="col-md-4 product-men">
+            <div class="men-pro-item simpleCart_shelfItem">
+              <div class="men-thumb-item">
+                <img src="{{oil.product_image.url}}" alt="">
+                <div class="men-cart-pro">
+                  <div class="inner-men-cart-pro">
+                    <a href="{% url 'product-detail' oil.id %}" class="link-product-add-cart">Quick View</a>
+                  </div>
+                </div>
+                <span class="product-new-top">New</span>
+              </div>
+              <div class="item-info-product ">
+                <h4>
+                  <a href="#">{{oil.title}}</a>
+                </h4>
+                <div class="info-product-price">
+                  <span class="item_price">Rs. {{oil.selling_price}}</span>
+                  <del>Rs. {{oil.discounted_price}}</del>
+                </div>
+              </div>
+            </div>
+          </div>   
+          {% endfor %}  
+          <div class="clearfix"></div>
+        </div>
+
+        
+      
+        <!-- //third section (oils) -->
+        <!-- fourth section (noodles) -->
+        <div class="product-sec1">
+          <h3 class="heading-tittle">Pasta & Noodles</h3>
+          {% for p in pasta %}
+          <div class="col-md-4 product-men">
+            <div class="men-pro-item simpleCart_shelfItem">
+              <div class="men-thumb-item">
+                <img src="{{p.product_image.url}}" alt="">
+                <div class="men-cart-pro">
+                  <div class="inner-men-cart-pro">
+                    <a href="{% url 'product-detail' p.id %}" class="link-product-add-cart">Quick View</a>
                   </div>
                   <span class="product-new-top">New</span>
                 </div>
-                <div class="item-info-product ">
-                  <h4>
-                    <a href="#">{{oil.title}}</a>
-                  </h4>
-                  <div class="info-product-price">
-                    <span class="item_price">{{oil.selling_price}}</span>
-                    <del>{{oil.discounted_price}}</del>
-                  </div>
-                  
-
+              </div>
+              <div class="item-info-product ">
+                <h4>
+                  <a href="{% url 'product-detail' p.id %}">{{p.title}}</a>
+                </h4>
+                <div class="info-product-price">
+                  <span class="item_price">Rs. {{p.discounted_price}}</span>
+                  <del>Rs. {{p.selling_price}}</del>
                 </div>
               </div>
             </div>
-            {% endfor %}
-            
-            <div class="clearfix"></div>
-          </div>
-          <!-- //third section (oils) -->
-          <!-- fourth section (noodles) -->
-          <div class="product-sec1">
-            <h3 class="heading-tittle">Pasta & Noodles</h3>
-            {% for p in pasta %}
-            <div class="col-md-4 product-men">
-              <div class="men-pro-item simpleCart_shelfItem">
-                <div class="men-thumb-item">
-                  <img src="{{p.product_image.url}}" alt="">
-                  <div class="men-cart-pro">
-                    <div class="inner-men-cart-pro">
-                      <a href="{% url 'product-detail' p.id %}" class="link-product-add-cart">Quick View</a>
-                    </div>
-                    <span class="product-new-top">New</span>
-                  </div>
-                </div>
-                <div class="item-info-product ">
-                  <h4>
-                    <a href="#">{{p.title}}</a>
-                  </h4>
-                  <div class="info-product-price">
-                    <span class="item_price">{{p.discounted_price}}</span>
-                    <del>{{p.selling_price}}</del>
-                  </div>
-                  
-
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-            <div class="clearfix"></div>
-          </div>
-          <!-- //fourth section (noodles) -->
-        
-      </div>
-      <!-- //product right -->
-    </div>
-  
-  <!-- //top products -->
-
-  <div class="m-3">
-    <h2>ShoppinglyX Bottom Wears</h2>
-    <!-- Slider 1 -->
-    <div class="owl-carousel" id="slider1">
-      {% for b in bottomwears %}
-      <a href="{% url 'product-detail' b.id %}" class="btn">
-
-        <div class="item"><img src="{{ b.product_image.url }}" alt="" height="200px"><span
-            class="fw-bold">{{b.title}}</span><br><span class="fs-5">Rs. {{b.discounted_price}}</span>
-          <br>
-          <form action="/add-to-cart" class="d-inline">
-
-            <input type="hidden" name="prod_id" value="{{b.id}}" id="prod_id">
-            <button type="submit" class="btn btn-info btn-lg">Add To Cart</button>
-          </form>
+          </div>   
+          {% endfor %}  
+          <div class="clearfix"></div>
         </div>
-      </a>
-
-      {% endfor %}
-    </div>
-
+        <!-- //fourth section (noodles) -->
+        <!-- //product right -->
+      </div> 
+    </div>   
   </div>
-</div>
-<!-- End 1st Product Slider -->
-
-<!-- Payment Info Section -->
-<div class="container my-5">
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="card mb-3">
-        <div class="card-body">
-          <img src="{% static 'app/images/payavail/cc.jpg' %}" alt="" srcset="" class="img-fluid">
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card mb-3">
-        <div class="card-body">
-          <img src="{% static 'app/images/payavail/upi.jpg' %}" alt="" srcset="" class="img-fluid">
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card mb-3">
-        <div class="card-body">
-          <img src="{% static 'app/images/payavail/nb.jpg' %}" alt="" srcset="" class="img-fluid">
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="card mb-3">
-        <div class="card-body">
-          <img src="{% static 'app/images/payavail/bj.jpg' %}" alt="" srcset="" class="img-fluid">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Payment Info Section -->
-
-<!-- 2nd Product Slider -->
-<div class="mx-3">
-  <h2>ShoppingX Top Wears</h2>
-  <!-- Slider 2 -->
-  <div class="owl-carousel" id="slider2">
-    {% for tp in topwears %}
-    <a href="{% url 'product-detail' tp.id %}" class="btn">
-      <div class="item"><img src="{{tp.product_image.url}}" alt="" height="200px"><span
-          class="fw-bold">{{tp.title}}</span><br><span class="fs-5">Rs. {{tp.discounted_price}}</span>
-        <br>
-        <form action="/add-to-cart" class="d-inline">
-
-          <input type="hidden" name="prod_id" value="{{tp.id}}" id="prod_id">
-          <button type="submit" class="btn btn-info btn-lg">Add To Cart</button>
-        </form>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-</div>
-<!-- End 2nd Product Slider -->
-
-<div class="mx-3">
-  <h2>ShoppingX Mobiles</h2>
-  <div class="owl-carousel" id="slider3">
-    {% for m in mobiles %}
-    <a href="{% url 'product-detail' m.id %}" class="btn">
-      <div class="item"><img src="{{m.product_image.url}}" alt="" height="200px"><span
-          class="fw-bold">{{m.title}}</span><br><span class="fs-5">Rs. {{m.discounted_price}}</span>
-        <br>
-        <form action="/add-to-cart" class="d-inline">
-
-          <input type="hidden" name="prod_id" value="{{m.id}}" id="prod_id">
-          <button type="submit" class="btn btn-info btn-lg">Add To Cart</button>
-        </form>
-      </div>
-    </a>
-    {% endfor %}
-  </div>
-</div>
-<!-- special offers -->
-<div class="featured-section" id="projects">
-  <div class="container">
-    <!-- tittle heading -->
-    <h3 class="tittle-w3l">Special Offers
-      <span class="heading-style">
-        <i></i>
-        <i></i>
-        <i></i>
-      </span>
-    </h3>
-    <!-- //tittle heading -->
-    <div class="content-bottom-in">
-      <ul id="flexiselDemo1">
-        <li>
-          <div class="w3l-specilamk">
-            <div class="speioffer-agile">
-              <a href="#">
-                <img src="{% static 'app/images/s1.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="product-name-w3l">
-              <h4>
-                <a href="#">Aashirvaad, 5g</a>
-              </h4>
-              <div class="w3l-pricehkj">
-                <h6>$220.00</h6>
-                <p>Save $40.00</p>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Aashirvaad, 5g" />
-                    <input type="hidden" name="amount" value="220.00" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="w3l-specilamk">
-            <div class="speioffer-agile">
-              <a href="#">
-                <img src="{% static 'app/images/s4.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="product-name-w3l">
-              <h4>
-                <a href="#">Kissan Tomato Ketchup, 950g</a>
-              </h4>
-              <div class="w3l-pricehkj">
-                <h6>$99.00</h6>
-                <p>Save $20.00</p>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Kissan Tomato Ketchup, 950g" />
-                    <input type="hidden" name="amount" value="99.00" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="w3l-specilamk">
-            <div class="speioffer-agile">
-              <a href="#">
-                <img src="{% static 'app/images/s2.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="product-name-w3l">
-              <h4>
-                <a href="#">Madhur Pure Sugar, 1g</a>
-              </h4>
-              <div class="w3l-pricehkj">
-                <h6>$69.00</h6>
-                <p>Save $20.00</p>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Madhur Pure Sugar, 1g" />
-                    <input type="hidden" name="amount" value="69.00" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="w3l-specilamk">
-            <div class="speioffer-agile">
-              <a href="single2.html">
-                <img src="{% static 'app/images/s3.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="product-name-w3l">
-              <h4>
-                <a href="single2.html">Surf Excel Liquid, 1.02L</a>
-              </h4>
-              <div class="w3l-pricehkj">
-                <h6>$187.00</h6>
-                <p>Save $30.00</p>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Surf Excel Liquid, 1.02L" />
-                    <input type="hidden" name="amount" value="187.00" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="w3l-specilamk">
-            <div class="speioffer-agile">
-              <a href="#">
-                <img src="{% static 'app/images/s8.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="product-name-w3l">
-              <h4>
-                <a href="#">Cadbury Choclairs, 655.5g</a>
-              </h4>
-              <div class="w3l-pricehkj">
-                <h6>$160.00</h6>
-                <p>Save $60.00</p>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Cadbury Choclairs, 655.5g" />
-                    <input type="hidden" name="amount" value="160.00" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="w3l-specilamk">
-            <div class="speioffer-agile">
-              <a href="single2.html">
-                <img src="{% static 'app/images/s6.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="product-name-w3l">
-              <h4>
-                <a href="single2.html">Fair & Lovely, 80 g</a>
-              </h4>
-              <div class="w3l-pricehkj">
-                <h6>$121.60</h6>
-                <p>Save $30.00</p>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Fair & Lovely, 80 g" />
-                    <input type="hidden" name="amount" value="121.60" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="w3l-specilamk">
-            <div class="speioffer-agile">
-              <a href="#">
-                <img src="{% static 'app/images/s5.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="product-name-w3l">
-              <h4>
-                <a href="#">Sprite, 2.25L (Pack of 2)</a>
-              </h4>
-              <div class="w3l-pricehkj">
-                <h6>$180.00</h6>
-                <p>Save $30.00</p>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Sprite, 2.25L (Pack of 2)" />
-                    <input type="hidden" name="amount" value="180.00" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="w3l-specilamk">
-            <div class="speioffer-agile">
-              <a href="single2.html">
-                <img src="{% static 'app/images/s9.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="product-name-w3l">
-              <h4>
-                <a href="single2.html">Lakme Eyeconic Kajal, 0.35 g</a>
-              </h4>
-              <div class="w3l-pricehkj">
-                <h6>$153.00</h6>
-                <p>Save $40.00</p>
-              </div>
-              <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                <form action="#" method="post">
-                  <fieldset>
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="add" value="1" />
-                    <input type="hidden" name="business" value=" " />
-                    <input type="hidden" name="item_name" value="Lakme Eyeconic Kajal, 0.35 g" />
-                    <input type="hidden" name="amount" value="153.00" />
-                    <input type="hidden" name="discount_amount" value="1.00" />
-                    <input type="hidden" name="currency_code" value="USD" />
-                    <input type="hidden" name="return" value=" " />
-                    <input type="hidden" name="cancel_return" value=" " />
-                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+</div>          
+    
 <!-- //special offers -->
+
+<!-- Special offer -->
+<div class="m-3">
+  <h2>Special Offer's</h2>
+  <!-- Slider 1 -->
+  <div class="owl-carousel" id="slider1">
+    {% for s in Special %}
+    <a href="{% url 'product-detail' s.id %}" class="btn">
+
+      <div class="item"><img src="{{ s.product_image.url }}" alt="" height="200px"><span
+          class="fw-bold">{{s.title}}</span><br><span class="fs-5">Rs. {{s.selling_price}}</span>
+        <br>
+      </div>
+    </a>
+
+    {% endfor %}
+  </div>
+
+</div>
+ 
+
 {% endblock main-content %}

@@ -28,7 +28,8 @@ CATEGORY_CHOICES = (
     ('R','Rice'),
     ('DP','Dal/Pulses'),
     ('N','Nuts'),
-    ('P','Pasta & Noodles')
+    ('P','Pasta & Noodles'),
+    ('SO','Special Offer')
 )
 class Product(models.Model):
     title=models.CharField(max_length=100)

@@ -369,27 +369,34 @@ button.w3view-cart {
   } 
   .carousel-item{
     height: 600px;
-    min-height:200px;
+    min-height:cover;
+    
   }
   .carousel-caption{
     bottom: 300px;
   }
   .carousel-caption h3{
     font-size: 70px;
+    font-weight: 600;
     text-transform: uppercase;
-    color: orangered;
+    color: white;
     letter-spacing: 2px;
     margin-top: 20px;
     text-shadow: 3px 8px 2px rgb(12, 12, 12);
     background: rgba(0, 0, 0, 0.34);
   }
+  .carousel-caption h3 span{
+    color: darkorange;
+  }
   .carousel-caption p{
-    width: 100px;
+    width: cover;
     margin: auto;
     font-size: 18px;
     color: #fff;
-    background: rgba(0, 0, 0, 0.54);
-    text-shadow: 3px 8px 2px rgb(12, 12, 12);
+  }
+  .carousel-caption p span{
+    font-size: 30px;
+    font-weight: 500;
   }
   .carousel-caption a{
     text-transform: uppercase;
@@ -415,7 +422,7 @@ button.w3view-cart {
   }
   .carousel-item{
     height: 100vh;
-    min-height:200px;
+    min-height:cover;
   }
 
 /*-- carousel-slider --*/  
@@ -912,8 +919,8 @@ span.item_price {
     margin-left: 13px;
     font-size: 15px;
 }
-.product-sec2{
-    background: url(../static/app/images/bg1.jpg) no-repeat 0px 0px;
+.product-sec1.product-sec2{
+    background: url(../images/bg1.jpg) no-repeat 0px 0px;
     background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
@@ -923,7 +930,7 @@ span.item_price {
     position: relative;
 }
 .effect-bg {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 .effect-bg h3 {
     color: #fff;
@@ -942,8 +949,8 @@ span.item_price {
 }
 h3.w3l-nut-middle {
     position: absolute;
-    right: 40%;
-    bottom: 25%;
+    right: 30%;
+    bottom: 44%;
     font-size: 35px;
     font-weight: 800;
     color: rgba(10, 10, 10, 0.38);
@@ -956,7 +963,7 @@ h3.w3l-nut-middle {
     padding: 5em 0;
 }
 /*-- tittle heading --*/
-h3.tittle-w3l {
+.m-3 h2 {
     color: #000;
     font-size: 3em;
     text-align: center;
@@ -987,13 +994,13 @@ span.heading-style {
     height: 12px;
     background-color: #1accfd;
 }
-h3.tittle-w3l:after {
+.m-3 h3:after {
     content: "";
     background-color: rgba(0, 0, 0, 0.33);
     position: absolute;
     bottom: 0px;
     right: 41.5%;
-    width: 200px;
+    width: cover;
     height: 1px;
     background-position: 0px 0px;
 }
@@ -1389,11 +1396,11 @@ p.footer-main span {
 /* contact page */
 .page-head_agile_info_w3l {
     background: url(../images/banner2.jpg) no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-    -moz-background-size: cover;
+    background-size: 50px;
+    -webkit-background-size: 50px;
+    -o-background-size: 50px;
+    -ms-background-size: 50px;
+    -moz-background-size: 50px;
     min-height: 300px;
 }
 ul.w3_short li {
@@ -2177,7 +2184,7 @@ img.zoom-img:hover{
 .starRating:not(old) {
     display: inline-block;
     height: 18px;
-    width:100px;
+    width:cover;
     overflow: hidden;
 }
 
@@ -3147,7 +3154,7 @@ input[type="radio"], input[type="checkbox"] {
         margin-top: 49px;
     }
     .page-head_agile_info_w3l {
-        min-height: 200px;
+        min-height: cover;
     }
     .dropdown-menu.columns-3 {
         min-width: 372px;
@@ -4313,7 +4320,7 @@ input[type="radio"], input[type="checkbox"] {
     }
     h3.tittle-w3l:after {
         right: 35%;
-        width: 100px;
+        width: cover;
     }
     .product-new-top {
         right: 3px;
@@ -4542,7 +4549,7 @@ input[type="radio"], input[type="checkbox"] {
     }
     h3.tittle-w3l:after {
         right: 33%;
-        width: 100px;
+        width: cover;
         bottom: -1px;
     }
     .side-bar {
@@ -4729,7 +4736,7 @@ input[type="radio"], input[type="checkbox"] {
         padding: 0;
     }
     .map iframe {
-        min-height: 200px;
+        min-height: cover;
     }
     .modal-body.modal-body-sub_agile {
         padding: 0 1em 1em;
@@ -4765,7 +4772,7 @@ input[type="radio"], input[type="checkbox"] {
         line-height: 23px;
     }
     .wthree-help textarea {
-        height: 100px;
+        height: cover;
         padding: 0 16px;
     }
     .wthree-help form input[type="submit"] {
