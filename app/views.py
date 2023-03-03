@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
 
 class ProductView(View):
     def get(self, request):
@@ -336,3 +337,18 @@ def submit_review(request, product_id):
                 data.save()
                 messages.success(request, 'Thank you! Your review has been submitted.')
                 return redirect(url)
+
+def search(request):
+    if request.method == 'GET':
+        query = request.GET.get('Search')
+        
+        if query is not None:
+            data = (Q(title__icontains=query)|Q(brand__icontains=query)|Q(category__icontains=query))
+           
+            product = Product.objects.filter(data)
+            
+            return render(request, 'app/search.html',{'product':product})
+        else:
+            return render(request, 'app/search.html')
+    else:
+        return render(request, 'app/search.html')

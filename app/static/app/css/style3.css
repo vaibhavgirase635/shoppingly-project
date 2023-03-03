@@ -368,7 +368,7 @@ button.w3view-cart {
     font-family: montserrat;
   } 
   .carousel-item{
-    height: 600px;
+    height: 500px;
     min-height:cover;
     
   }
@@ -381,7 +381,7 @@ button.w3view-cart {
     text-transform: uppercase;
     color: white;
     letter-spacing: 2px;
-    margin-top: 20px;
+    margin-top: 40px;
     text-shadow: 3px 8px 2px rgb(12, 12, 12);
     background: rgba(0, 0, 0, 0.34);
   }
@@ -408,6 +408,9 @@ button.w3view-cart {
     margin-top: 10px;
 
   }
+  #carouselExampleControlsNoTouching{
+    bottom: 800;
+  }
   @media only screen and (max-widgth: 767px){
     .carousel-caption{
       bottom: 225px;
@@ -422,7 +425,7 @@ button.w3view-cart {
   }
   .carousel-item{
     height: 100vh;
-    min-height:cover;
+    min-height: cover;
   }
 
 /*-- carousel-slider --*/  
@@ -962,10 +965,21 @@ h3.w3l-nut-middle {
 .ads-grid, footer, .contact-w3l, .w3_wthree_agileits_icons, .typo, .faqs-w3l, .terms-of-use, .welcome, .about, .banner-bootom-w3-agileits, .privacy {
     padding: 5em 0;
 }
+
 /*-- tittle heading --*/
-.m-3 h2 {
+h3.tittle-w3l {
     color: #000;
-    font-size: 3em;
+    font-size: 45px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 20px;
+}
+.m-2 h2 {
+    color: #000;
+    font-size: 45px;
+    font-weight: 600;
     text-align: center;
     margin-bottom: 50px;
     position: relative;
@@ -994,7 +1008,7 @@ span.heading-style {
     height: 12px;
     background-color: #1accfd;
 }
-.m-3 h3:after {
+h3.tittle-w3l:after {
     content: "";
     background-color: rgba(0, 0, 0, 0.33);
     position: absolute;
@@ -4900,4 +4914,8 @@ input[type="radio"], input[type="checkbox"] {
     width: 80px;
     height: 80px;
     border: 1px solid grey;
+  }
+  #navbarSupportedContent{
+    border: solid 1px #000;
+
   }

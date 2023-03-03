@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Search Products{% endblock title %}
+{% block main-content %}
+<div class="container my-4">
+    <div class="row">
+        <div class="agileinfo-ads-display col-md-12">
+            <div class="wrapper">
+                <!-- first section (nuts) -->
+                <div class="product-sec1">
+                    <h3 class="heading-tittle">Search Products</h3>
+                    {% for p in product %}
+                    <div class="col-md-4 product-men">
+                        <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-thumb-item">
+                                <img src="{{p.product_image.url}}" width="200" height="200" alt="">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+                                        <a href="{% url 'product-detail' p.id %}" class="link-product-add-cart">Quick
+                                            View</a>
+                                    </div>
+                                </div>
+                                <span class="product-new-top">New</span>
+                            </div>
+                            <div class="item-info-product ">
+                                <h4>
+                                    <a href="{% url 'product-detail' p.id %}">{{p.title}}</a>
+                                </h4>
+                                <div class="info-product-price">
+                                    <span class="item_price">Rs. {{p.discounted_price}}</span>
+                                    <del>Rs. {{p.selling_price}}</del>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
