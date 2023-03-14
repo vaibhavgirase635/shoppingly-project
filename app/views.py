@@ -6,7 +6,9 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
-
+import razorpay
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 class ProductView(View):
     def get(self, request):
         totalitem = 0
@@ -55,6 +57,7 @@ def show_cart(request):
     if request.user.is_authenticated:
         totalitem = 0
         user = request.user
+        
         cart =Cart.objects.filter(user=user)
         print(cart)
         amount = 0.0
@@ -262,9 +265,8 @@ def LoginPage(request):
             return HttpResponse ("Username or Password is incorrect!!!")
 
     return render (request,'app/login.html')
-  
 
-def checkout(request):
+def selectaddress(request):
     user = request.user
     add = Customer.objects.filter(user=user)
     cart_items = Cart.objects.filter(user=user)
@@ -277,18 +279,53 @@ def checkout(request):
             tempamount = (p.quantity * p.product.discounted_price)
             amount += tempamount
             totalamount = amount + shipping_amount
+    
+    
+    return render(request, 'app/selectaddress.html', {'add':add, 'totalamount':totalamount, 'cart_items':cart_items})
 
-    return render(request, 'app/checkout.html', {'add':add, 'totalamount':totalamount, 'cart_items':cart_items})
 
 def payment_done(request):
     user = request.user
-    custid = request.GET.get('custid')
+    #print(user)
+    custid = request.POST.get('custid')
+    #print(custid)
     customer = Customer.objects.get(id=custid)
     cart = Cart.objects.filter(user=user)
+    #print(cart)
     for c in cart:
         OrderPlaced(user=user, customer=customer, product=c.product, quantity=c.quantity).save()
-        c.delete()
-    return redirect("orders")
+        
+    return redirect("checkout")
+
+def checkout(request):
+    user = request.user
+    cart_items = Cart.objects.filter(user=user)
+    for i in cart_items:
+        order = OrderPlaced.objects.filter(user=user, product=i.product.id)
+        #print(order)
+    for j in order:
+        add = Customer.objects.get(id=j.customer.id)
+        print(add)
+    amount = 0.0
+    shipping_amount = 70.0
+    total_amount = 0.0
+    cart_product= [ p for p in Cart.objects.all() if p.user == request.user]
+    if cart_product:
+        for p in cart_product:
+            tempamount = (p.quantity * p.product.discounted_price)
+            amount += tempamount
+            totalamount = amount + shipping_amount
+    
+    client = razorpay.Client(auth=(settings.KEY_ID, settings.KEY_SECRET))
+    payment = client.order.create({'amount':totalamount*100, 'currency':'INR', 'payment_capture':1})
+    p.razorpay_order_id = payment['id']
+    p.save()
+    order_id = payment['id']
+    #print(payment)
+    return render(request, 'app/checkout.html', {'add':add, 'totalamount':totalamount, 'cart_items':cart_items, 
+                'payment':payment, 'order_id':order_id, 'user':request.user})
+
+
 
 class ProfileView(View):
     def get(self, request):
@@ -352,3 +389,26 @@ def search(request):
             return render(request, 'app/search.html')
     else:
         return render(request, 'app/search.html')
+
+
+@csrf_exempt
+def success(request):
+    if request.method == "POST":
+        user = request.user.id
+        
+        user = request.POST.get('custid')
+        #print(user)
+        a = request.POST
+        #print(a)
+        order_id = ""
+        for key,val in a.items():
+            if key == 'razorpay_order_id':
+                order_id = val
+                break
+        
+        cart = Cart.objects.filter(razorpay_order_id=order_id)
+        for c in cart:
+            
+            c.delete()
+    return redirect('orders')
+

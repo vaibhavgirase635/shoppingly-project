@@ -73,9 +73,11 @@ urlpatterns = [
     path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
     path('logout/',auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('checkout/', views.checkout, name='checkout'),
+    path('selectaddress/', views.selectaddress, name='selectaddress'),
     path('paymentdone/', views.payment_done, name='paymentdone'),
     path('submit_review/<int:product_id>/', views.submit_review, name='submit_review'),
-    path('search/', views.search, name='search')
+    path('search/', views.search, name='search'),
+    path('success/', views.success, name='success'),
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

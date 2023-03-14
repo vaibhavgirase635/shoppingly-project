@@ -63,6 +63,10 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
+    is_paid = models.BooleanField(default=False, null=True, blank=True)
+    razorpay_order_id = models.CharField(max_length=100, null=True, blank=True)
+    razorpay_payment_id = models.CharField(max_length=100, null=True, blank=True)
+    razorpay_payment_signature = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
@@ -80,12 +84,12 @@ STATUS_CHOICES=(
 )
 class OrderPlaced(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=1)
-    order_date =models.DateTimeField(auto_now_add=True)
-    status= models.CharField(max_length=50,choices=STATUS_CHOICES, default='Pending')
-
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE,blank=True, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
+    quantity = models.PositiveIntegerField(default=1, blank=True, null=True)
+    order_date =models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    status= models.CharField(max_length=50,choices=STATUS_CHOICES, default='Pending', blank=True, null=True)
+    
     def __str__(self):
         return str(self.id)
 

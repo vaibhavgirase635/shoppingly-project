@@ -140,6 +140,9 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+KEY_ID = ''
+KEY_SECRET = ''
+
 JAZZMIN_SETTINGS = {
     'site_header': "Grossery Shop",
     'site_brand': "You order, we deliver",
